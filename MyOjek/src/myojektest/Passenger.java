@@ -14,4 +14,10 @@ public class Passenger {
     public String email;
     public String nama;
     public String password;
+    
+    
+    
+    public static void main(String[] args) {
+        
+    }
 }

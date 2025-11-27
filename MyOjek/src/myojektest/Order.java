@@ -39,4 +39,8 @@ public class Order {
     public Order() {
     }
 
+    
+    public static void main(String[] args) {
+        
+    }
 }
