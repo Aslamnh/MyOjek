@@ -9,10 +9,7 @@ public class OrderDAO {
         createTable();
     }
 
-<<<<<<< HEAD
-=======
     // Membuat tabel
->>>>>>> cb0b79ff9598008fafde8fe49ce9c58224b11344
     private static void createTable() {
         String sql = """
             CREATE TABLE IF NOT EXISTS ride_order (
@@ -31,30 +28,20 @@ public class OrderDAO {
             );
         """;
 
-<<<<<<< HEAD
-        try (Connection c = Database.getConnection(); Statement st = c.createStatement()) {
-
-=======
         try (Connection c = Database.getConnection();
              Statement st = c.createStatement()) {
->>>>>>> cb0b79ff9598008fafde8fe49ce9c58224b11344
             st.execute(sql);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-<<<<<<< HEAD
-    public static boolean insert(Order o) {
-        createTable();
-        String sql = "INSERT INTO ride_order(tanggal,alamat_jemput,alamat_antar,passenger_id,driver_id,biaya,jarak_km) VALUES(?,?,?,?,?,?,?)";
-=======
     // Insert
-    public static void insert(Order o) {
+    public static boolean insert(Order o) {
         String sql = "INSERT INTO ride_order(tanggal,alamat_jemput,alamat_antar,passenger_id,driver_id,biaya,jarak_km,accepted,finished) VALUES(?,?,?,?,?,?,?,?,?)";
->>>>>>> cb0b79ff9598008fafde8fe49ce9c58224b11344
 
-        try (Connection c = Database.getConnection(); PreparedStatement ps = c.prepareStatement(sql)) {
+        try (Connection c = Database.getConnection();
+             PreparedStatement ps = c.prepareStatement(sql)) {
 
             ps.setString(1, o.tanggal);
             ps.setString(2, o.alamatJemput);
@@ -67,11 +54,11 @@ public class OrderDAO {
             ps.setInt(9, o.finisihed ? 1 : 0);
 
             ps.executeUpdate();
-            return true;
 
+            return true;
         } catch (Exception e) {
             e.printStackTrace();
-            return false; 
+            return false;
         }
     }
 
@@ -80,7 +67,9 @@ public class OrderDAO {
         ArrayList<Order> list = new ArrayList<>();
         String sql = "SELECT * FROM ride_order";
 
-        try (Connection c = Database.getConnection(); Statement st = c.createStatement(); ResultSet rs = st.executeQuery(sql)) {
+        try (Connection c = Database.getConnection();
+             Statement st = c.createStatement();
+             ResultSet rs = st.executeQuery(sql)) {
 
             while (rs.next()) {
                 list.add(extractOrder(rs));
@@ -109,7 +98,8 @@ public class OrderDAO {
             WHERE order_id=?
         """;
 
-        try (Connection c = Database.getConnection(); PreparedStatement ps = c.prepareStatement(sql)) {
+        try (Connection c = Database.getConnection();
+             PreparedStatement ps = c.prepareStatement(sql)) {
 
             ps.setString(1, o.tanggal);
             ps.setString(2, o.alamatJemput);
@@ -133,7 +123,8 @@ public class OrderDAO {
     public static void delete(int id) {
         String sql = "DELETE FROM ride_order WHERE order_id=?";
 
-        try (Connection c = Database.getConnection(); PreparedStatement ps = c.prepareStatement(sql)) {
+        try (Connection c = Database.getConnection();
+             PreparedStatement ps = c.prepareStatement(sql)) {
 
             ps.setInt(1, id);
             ps.executeUpdate();
