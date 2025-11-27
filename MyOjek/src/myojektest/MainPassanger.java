@@ -13,8 +13,12 @@ public class MainPassanger extends javax.swing.JFrame {
     /**
      * Creates new form LoginView
      */
-    public MainPassanger() {
+    
+    
+    public String nohp;
+    public MainPassanger(String nohp) {
         initComponents();
+        this.nohp=nohp;
     }
 
     /**
@@ -167,7 +171,7 @@ public class MainPassanger extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainPassanger().setVisible(true);
+                new MainPassanger(null).setVisible(true);
             }
         });
     }

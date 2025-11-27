@@ -10,7 +10,7 @@ public class OrderDAO {
         createTable();
     }
 
-    private void createTable() {
+    private static void createTable() {
         String sql = """
                 CREATE TABLE IF NOT EXISTS ride_order (
                 order_id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -35,7 +35,7 @@ public class OrderDAO {
         }
     }
 
-    public void insert(Order o) {
+    public static void insert(Order o) {
         String sql = "INSERT INTO ride_order(tanggal,alamat_jemput,alamat_antar,passenger_id,driver_id,biaya,jarak_km) VALUES(?,?,?,?,?,?,?)";
 
         try (Connection c = Database.getConnection();
@@ -56,7 +56,7 @@ public class OrderDAO {
         }
     }
 
-    public ArrayList<Order> getAll() {
+    public static ArrayList<Order> getAll() {
         ArrayList<Order> list = new ArrayList<>();
         String sql = "SELECT * FROM ride_order";
 
@@ -85,7 +85,7 @@ public class OrderDAO {
         return list;
     }
 
-    public void update(Order o) {
+    public static void  update(Order o) {
         String sql = "UPDATE ride_order SET tanggal=?,alamat_jemput=?,alamat_antar=?,passenger_id=?,driver_id=?,biaya=?,jarak_km=? WHERE order_id=?";
 
         try (Connection c = Database.getConnection();
@@ -107,7 +107,7 @@ public class OrderDAO {
         }
     }
 
-    public void delete(int id) {
+    public static void  delete(int id) {
         String sql = "DELETE FROM ride_order WHERE order_id=?";
 
         try (Connection c = Database.getConnection();

@@ -13,35 +13,9 @@ import java.util.Arrays;
  */
 public class OrderController {
 
-    private static ArrayList<Order> orders= new ArrayList<Order>();
-    
-    static void newOrder(Order order){
-        
-        orders.addFirst(order);
-        javax.swing.JOptionPane.showMessageDialog(order.guiPassanger, "Pemesanan Order Berhasil, Menunggu Driver");
-
-    }
-
-
-    public static Order[] getOrders(){
-        return (Order[]) orders.toArray();
-    }
-    
-    
-    
-    public static void acceptOrder(Order order){
-       order.accepted=true;
-       
-       
-       //masukkan ke db
-    }
-    
-    
-    
-    public static void finishOrder(){
-        
-    }
-    
+public static void buatOrder(Order order){
+    OrderQueue.newOrder(order);
+}
     
     
 }

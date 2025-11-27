@@ -33,6 +33,13 @@ public class LoginController {
         if (authenticatedPassenger != null) {
             JOptionPane.showMessageDialog(view, "Masuk Berhasil! Selamat datang, " + authenticatedPassenger.nama + ".", "Sukses", JOptionPane.INFORMATION_MESSAGE);
             view.dispose();
+            if (!view.driver)
+              java.awt.EventQueue.invokeLater(() -> {      
+            new MainPassanger(noHp).setVisible(true);
+        });
+            
+            
+            
             // TODO: Buka main application window (misalnya DashboardView)
         } else {
             JOptionPane.showMessageDialog(view, "Nomor HP atau Password salah.", "Error", JOptionPane.ERROR_MESSAGE);
