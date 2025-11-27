@@ -109,4 +109,49 @@ public class PassengerDAO {
             e.printStackTrace();
         }
     }
+    
+    public Passenger authenticate(String no_hp, String password) {
+        String sql = "SELECT * FROM passenger WHERE no_hp=? AND password=?";
+        Passenger p = null;
+
+        try (Connection c = Database.getConnection();
+            PreparedStatement ps = c.prepareStatement(sql)) {
+
+            ps.setString(1, no_hp);
+            ps.setString(2, password);
+
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    p = new Passenger();
+                    p.passenger_id = rs.getInt("passenger_id");
+                    p.no_hp = rs.getString("no_hp");
+                    p.email = rs.getString("email");
+                    p.nama = rs.getString("nama");
+                    p.password = rs.getString("password"); 
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return p;
+    }
+    
+    public boolean isPhoneNumberExists(String no_hp) {
+        String sql = "SELECT COUNT(*) FROM passenger WHERE no_hp=?";
+    
+        try (Connection c = Database.getConnection();
+            PreparedStatement ps = c.prepareStatement(sql)) {
+        
+            ps.setString(1, no_hp);
+        
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getInt(1) > 0; // Jika count > 0, maka Nomor HP sudah ada
+                }
+            }
+        } catch (Exception e) {
+         e.printStackTrace();
+        }
+        return false;
+    }
 }

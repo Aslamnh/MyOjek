@@ -11,13 +11,12 @@ import javax.swing.JOptionPane;
  * @author aslam
  */
 public class LoginController {
-    private LoginView view; // Ganti dengan class View Anda
+    private LoginView view;
     private PassengerDAO dao;
 
     public LoginController(LoginView view, PassengerDAO dao) {
         this.view = view;
         this.dao = dao;
-        // Asumsi: View Anda memiliki metode untuk mendaftarkan listener
         this.view.addLoginListener(e -> handleLogin());
         this.view.addSwitchToRegisterListener(e -> switchToRegister());
     }
@@ -42,6 +41,6 @@ public class LoginController {
     
     private void switchToRegister() {
         view.dispose(); // Tutup LoginView
-        new RegisterView(dao).setVisible(true); // Buka RegisterView
+        new RegisterView(this.dao).setVisible(true); // Buka RegisterView
     }
 }

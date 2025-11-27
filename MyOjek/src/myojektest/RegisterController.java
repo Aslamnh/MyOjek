@@ -17,7 +17,6 @@ public class RegisterController {
     public RegisterController(RegisterView view, PassengerDAO dao) {
         this.view = view;
         this.dao = dao;
-        // Asumsi: View Anda memiliki metode untuk mendaftarkan listener
         this.view.addRegisterListener(e -> handleRegister());
     }
 

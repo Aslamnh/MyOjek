@@ -15,7 +15,7 @@ public class MyOjekMain {
      */
     public static void main(String[] args) {
          java.awt.EventQueue.invokeLater(() -> {
-            new LoginView().setVisible(true);
+            new LoginView(null).setVisible(true);
         });
        
     }
