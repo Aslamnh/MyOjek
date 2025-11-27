@@ -1,1 +1,6 @@
+<<<<<<< HEAD
 /MyOjek/dist/
+=======
+# ignore compiled classes
+*.class
+>>>>>>> cb0b79ff9598008fafde8fe49ce9c58224b11344

@@ -52,4 +52,8 @@ public class OrderController {
 
     }
 
+    public static void buatOrder(Order order) {
+        OrderQueue.newOrder(order);
+    }
+
 }
