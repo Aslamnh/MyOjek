@@ -133,7 +133,6 @@ public class MainPassanger extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-<<<<<<< HEAD
     private void KemanaFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KemanaFieldActionPerformed
     java.awt.EventQueue.invokeLater(() -> {      
             new FormOrderView().setVisible(true);
@@ -166,8 +165,6 @@ public class MainPassanger extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_KemanaFieldMouseClicked
 
-=======
->>>>>>> cb0b79ff9598008fafde8fe49ce9c58224b11344
     private void MotorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MotorButtonActionPerformed
     java.awt.EventQueue.invokeLater(() -> {      
             new FormOrderView().setVisible(true);
@@ -175,7 +172,6 @@ public class MainPassanger extends javax.swing.JFrame {
 
     }//GEN-LAST:event_MotorButtonActionPerformed
 
-<<<<<<< HEAD
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
  java.awt.EventQueue.invokeLater(() -> {      
             new FormOrderView().setVisible(true);
@@ -198,8 +194,6 @@ public class MainPassanger extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton6ActionPerformed
 
-=======
->>>>>>> cb0b79ff9598008fafde8fe49ce9c58224b11344
     /**
      * @param args the command line arguments
      */
