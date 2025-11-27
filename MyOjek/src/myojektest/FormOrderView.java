@@ -4,12 +4,15 @@
  */
 package myojektest;
 
+import java.time.LocalDate;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author sulto
  */
 public class FormOrderView extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FormOrderView.class.getName());
 
     /**
@@ -17,6 +20,7 @@ public class FormOrderView extends javax.swing.JFrame {
      */
     public FormOrderView() {
         initComponents();
+        lblAdminVal.setText("Rp. " + OrderController.admin);
     }
 
     /**
@@ -56,6 +60,7 @@ public class FormOrderView extends javax.swing.JFrame {
         btnPesan.setForeground(new java.awt.Color(255, 255, 255));
         btnPesan.setText("Pesan");
         btnPesan.setBorderPainted(false);
+        btnPesan.addActionListener(this::btnPesanActionPerformed);
 
         txtJarak.setText("3.5");
         txtJarak.addActionListener(this::txtJarakActionPerformed);
@@ -67,7 +72,7 @@ public class FormOrderView extends javax.swing.JFrame {
 
         lblBiaya.setText("Biaya");
 
-        lblBiayaVal.setText("Rp. 12,000");
+        lblBiayaVal.setText("Rp. 0");
 
         lblTitle.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -91,7 +96,7 @@ public class FormOrderView extends javax.swing.JFrame {
         txtTujuan.setText("Kost Putra, Jalan Bunga Mawar, Kota Malang");
 
         lblTotalVal.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        lblTotalVal.setText("Rp. 14,000");
+        lblTotalVal.setText("Rp. 0");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -173,7 +178,62 @@ public class FormOrderView extends javax.swing.JFrame {
 
     private void txtJarakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtJarakActionPerformed
         // TODO add your handling code here:
+        String input = txtJarak.getText();
+        try {
+            int jarak = Integer.parseInt(input);
+            int harga = jarak * 5000;
+            lblBiayaVal.setText("Rp " + harga);
+            OrderController.setHarga(harga);
+
+            lblTotalVal.setText("Rp " + OrderController.total);
+
+        } catch (NumberFormatException e) {
+            lblBiayaVal.setText("Input tidak valid");
+        }
     }//GEN-LAST:event_txtJarakActionPerformed
+
+    private void btnPesanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesanActionPerformed
+        // TODO add your handling code here:
+        try {
+            String asal = txtDari.getText();
+            String tujuan = txtTujuan.getText();
+            String jarakStr = txtJarak.getText();
+            
+            if (asal.isEmpty() || tujuan.isEmpty() || jarakStr.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Harap isi semua data!", "Peringatan", JOptionPane.WARNING_MESSAGE);
+                return;
+            }
+            
+            float jarak = Float.parseFloat(jarakStr);
+            int hargaDasar = (int) (jarak * 5000);
+            OrderController.setHarga(hargaDasar);
+            
+            Order orderBaru = new Order();
+            orderBaru.alamatJemput = asal;
+            orderBaru.alamatTujuan = tujuan;
+            orderBaru.jarak_km = jarak;
+            orderBaru.biaya = OrderController.total; 
+            orderBaru.tanggal = LocalDate.now().toString();
+            
+            orderBaru.passenger_id = 1;
+            orderBaru.driver_id = 1;
+
+            // 3. Kirim ke Controller
+            boolean sukses = OrderController.newOrder(orderBaru);
+
+            // 4. Tampilkan Alert Berhasil/Gagal
+            if (sukses) {
+                JOptionPane.showMessageDialog(this, "Order Berhasil Disubmit!", "Sukses", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "Gagal menyimpan data ke Database.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Format Jarak harus angka!", "Error", JOptionPane.ERROR_MESSAGE);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Terjadi kesalahan: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnPesanActionPerformed
 
     /**
      * @param args the command line arguments

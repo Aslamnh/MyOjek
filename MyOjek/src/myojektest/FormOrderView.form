@@ -130,6 +130,9 @@
         <Property name="text" type="java.lang.String" value="Pesan"/>
         <Property name="borderPainted" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPesanActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtJarak">
       <Properties>
@@ -167,7 +170,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblBiayaVal">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Rp. 12,000"/>
+        <Property name="text" type="java.lang.String" value="Rp. 0"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblTitle">
@@ -230,7 +233,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="12" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Rp. 14,000"/>
+        <Property name="text" type="java.lang.String" value="Rp. 0"/>
       </Properties>
     </Component>
   </SubComponents>
