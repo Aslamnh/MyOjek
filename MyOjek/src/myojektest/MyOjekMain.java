@@ -10,13 +10,12 @@ package myojektest;
  */
 public class MyOjekMain {
 
-    /**
+    /**aZ
      * @param args the command line arguments
      */
     public static void main(String[] args) {
          java.awt.EventQueue.invokeLater(() -> {
-            PassengerDAO dao = new PassengerDAO();
-            new LoginView(dao).setVisible(true);
+            new LoginView(new PassengerDAO()).setVisible(true);
         });
        
     }

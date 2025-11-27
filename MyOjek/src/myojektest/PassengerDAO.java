@@ -136,6 +136,8 @@ public class PassengerDAO {
         return p;
     }
     
+    
+    
     public boolean isPhoneNumberExists(String no_hp) {
         String sql = "SELECT COUNT(*) FROM passenger WHERE no_hp=?";
     
