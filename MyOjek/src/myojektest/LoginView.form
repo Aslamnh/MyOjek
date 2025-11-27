@@ -54,9 +54,9 @@
                           <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="jLabel3" alignment="0" max="32767" attributes="0"/>
-                              <Component id="jTextField2" alignment="0" min="-2" pref="316" max="-2" attributes="0"/>
+                              <Component id="txtPassword" alignment="0" min="-2" pref="316" max="-2" attributes="0"/>
                               <Component id="jLabel2" max="32767" attributes="0"/>
-                              <Component id="NomorField" max="32767" attributes="0"/>
+                              <Component id="txtNoHp" max="32767" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="jToggleButton1" min="-2" pref="24" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -68,11 +68,11 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
-                          <Component id="ButtonMasuk" min="-2" pref="205" max="-2" attributes="0"/>
+                          <Component id="btnMasuk" min="-2" pref="205" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
-                          <Component id="jButton1" min="-2" pref="205" max="-2" attributes="0"/>
+                          <Component id="btnDaftar" min="-2" pref="205" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
@@ -86,11 +86,11 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jLabel2" min="-2" pref="36" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="NomorField" min="-2" pref="37" max="-2" attributes="0"/>
+                  <Component id="txtNoHp" min="-2" pref="37" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jLabel3" min="-2" pref="36" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jTextField2" min="-2" pref="37" max="-2" attributes="0"/>
+                  <Component id="txtPassword" min="-2" pref="37" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jButton3" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -98,11 +98,11 @@
                       <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="ButtonMasuk" min="-2" pref="40" max="-2" attributes="0"/>
+                  <Component id="btnMasuk" min="-2" pref="40" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                   <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jButton1" min="-2" pref="40" max="-2" attributes="0"/>
+                  <Component id="btnDaftar" min="-2" pref="40" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="106" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -152,9 +152,9 @@
             <Property name="text" type="java.lang.String" value="Nomor HP"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="NomorField">
+        <Component class="javax.swing.JTextField" name="txtNoHp">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="NomorFieldActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNoHpActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
@@ -165,12 +165,12 @@
             <Property name="text" type="java.lang.String" value="Password"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField2">
+        <Component class="javax.swing.JTextField" name="txtPassword">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPasswordActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="btnDaftar">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="1"/>
@@ -178,10 +178,10 @@
             <Property name="text" type="java.lang.String" value="Daftar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDaftarActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="ButtonMasuk">
+        <Component class="javax.swing.JButton" name="btnMasuk">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="1"/>
@@ -189,7 +189,7 @@
             <Property name="text" type="java.lang.String" value="Masuk"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ButtonMasukActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMasukActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
