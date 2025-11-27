@@ -15,7 +15,8 @@ public class MyOjekMain {
      */
     public static void main(String[] args) {
          java.awt.EventQueue.invokeLater(() -> {
-            new LoginView(null).setVisible(true);
+            PassengerDAO dao = new PassengerDAO();
+            new LoginView(dao).setVisible(true);
         });
        
     }
