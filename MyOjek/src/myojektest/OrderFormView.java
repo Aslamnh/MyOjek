@@ -185,7 +185,11 @@ public class OrderFormView extends javax.swing.JFrame {
     }//GEN-LAST:event_JemputFieldActionPerformed
 
     private void ButtonPesanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonPesanActionPerformed
-        // TODO add your handling code here:
+        
+       OrderController.newOrder(new Order(TujuanField.getText(),JemputField.getText(), Double.valueOf(HargaField.getText())   ,"Default" ,this));
+       
+       
+       
     }//GEN-LAST:event_ButtonPesanActionPerformed
 
     private void ButtonBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonBatalActionPerformed
