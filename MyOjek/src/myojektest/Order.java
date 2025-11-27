@@ -9,33 +9,41 @@ package myojektest;
  * @author rafae
  */
 public class Order {
-  String tujuan;
-  String jemput;
+  String alamatTujuan;
+  String alamatJemput;
   double harga;
   String passangerName;
   OrderFormView guiPassanger;
   String driverName;
   boolean accepted;
   boolean finisihed;
- 
-  
- 
+  public int order_id;
+  public String tanggal;
+  public int passenger_id;
+  public int driver_id;
+  public float biaya;
+  public float jarak_km;
+
+
   String DriverName;
   //var guiDriver;
   
   
 
 
-  public Order(String tujuan,String jemput,double harga,String passangerName,OrderFormView guiPassanger ){
+  public Order(String alamatTujuan,String alamatJemput,double harga,String passangerName,OrderFormView guiPassanger ){
      
-    this.tujuan=tujuan;
+    this.alamatTujuan=alamatTujuan;
     this.harga=harga;
-    this.jemput=jemput;
+    this.alamatJemput=alamatJemput;
     this.passangerName=passangerName;
     this.guiPassanger=guiPassanger;
     
   }
+
+  public Order(){}
   
   
-  
+
+
 }
