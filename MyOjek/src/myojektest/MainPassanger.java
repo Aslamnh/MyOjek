@@ -6,7 +6,7 @@ package myojektest;
 
 /**
  *
- * @author aslam
+ * @author rafae
  */
 public class MainPassanger extends javax.swing.JFrame {
 
