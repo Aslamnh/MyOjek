@@ -49,7 +49,7 @@ public class RegisterController {
         newPassenger.nama = nama;
         newPassenger.email = email;
         newPassenger.no_hp = noHp;
-        newPassenger.password = password; // Sebaiknya di-hash di aplikasi nyata!
+        newPassenger.password = password;
 
         // masuk ke database
         dao.insert(newPassenger);
