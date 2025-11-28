@@ -28,14 +28,14 @@ public class LoginController {
     }
 
     private void handleLogin() {
-        // 1. Ambil data dari View
+        // ambil data
         String noHp = view.getNoHpField().getText();
         String password = view.getPasswordField().getText();
 
-        // 2. Panggil DAO (Model) untuk otentikasi
+        // autentikasi
         Passenger authenticatedPassenger = dao.authenticate(noHp, password);
 
-        // 3. Update View berdasarkan hasil
+        // update view
         if (authenticatedPassenger != null) {
             JOptionPane.showMessageDialog(view, "Masuk Berhasil! Selamat datang, " + authenticatedPassenger.nama + ".", "Sukses", JOptionPane.INFORMATION_MESSAGE);
             view.dispose();
@@ -49,15 +49,14 @@ public class LoginController {
         });
             
             
-            
-            // TODO: Buka main application window (misalnya DashboardView)
+         
         } else {
             JOptionPane.showMessageDialog(view, "Nomor HP atau Password salah.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
     
     private void switchToRegister() {
-        view.dispose(); // Tutup LoginView
-        new RegisterView(this.dao).setVisible(true); // Buka RegisterView
+        view.dispose();
+        new RegisterView(this.dao).setVisible(true);
     }
 }

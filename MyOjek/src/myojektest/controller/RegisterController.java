@@ -25,38 +25,37 @@ public class RegisterController {
     }
 
     private void handleRegister() {
-        // 1. Ambil data dari View
+        // ambil data
         String nama = view.getNamaField().getText();
         String email = view.getEmailField().getText();
         String noHp = view.getNoHpField().getText();
         String password = view.getPasswordField().getText();
         String confirmPassword = view.getConfirmPasswordField().getText();
 
-        // 2. Validasi Input
+        // wajib diisi
         if (nama.isEmpty() || noHp.isEmpty() || password.isEmpty() || !password.equals(confirmPassword)) {
             JOptionPane.showMessageDialog(view, "Semua field harus diisi dan Password harus sama.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
-        // 3. Panggil DAO (Model)
+        // mengecek no hp
         if (dao.isPhoneNumberExists(noHp)) {
             JOptionPane.showMessageDialog(view, "Nomor HP sudah terdaftar.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
         
-        // Buat objek Passenger
+        // buat objek Passenger baru
         Passenger newPassenger = new Passenger();
         newPassenger.nama = nama;
         newPassenger.email = email;
         newPassenger.no_hp = noHp;
         newPassenger.password = password; // Sebaiknya di-hash di aplikasi nyata!
 
-        // Simpan ke database
+        // masuk ke database
         dao.insert(newPassenger);
 
-        // 4. Feedback ke user & Alihkan ke Login
         JOptionPane.showMessageDialog(view, "Pendaftaran Berhasil! Silakan Masuk.", "Sukses", JOptionPane.INFORMATION_MESSAGE);
-        view.dispose(); // Tutup Register
-        new LoginView(dao).setVisible(true); // Buka Login
+        view.dispose();
+        new LoginView(dao).setVisible(true);
     }
 }
