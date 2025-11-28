@@ -6,6 +6,9 @@ package myojektest;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import myojektest.Order;
+import myojektest.OrderDAO;
+import myojektest.OrderQueue;
 
 /**
  *
@@ -55,5 +58,7 @@ public class OrderController {
     public static void buatOrder(Order order) {
         OrderQueue.newOrder(order);
     }
+    
+    // File: OrderController.java (Melakukan perhitungan dan update View)
 
 }

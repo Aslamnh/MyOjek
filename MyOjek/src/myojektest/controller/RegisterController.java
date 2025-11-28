@@ -2,9 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package myojektest;
+package myojektest.controller;
 
+import myojektest.view.LoginView;
+import myojektest.view.RegisterView;
 import javax.swing.JOptionPane;
+import myojektest.Passenger;
+import myojektest.PassengerDAO;
 
 /**
  *

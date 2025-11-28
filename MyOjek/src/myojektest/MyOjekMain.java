@@ -4,6 +4,8 @@
  */
 package myojektest;
 
+import myojektest.view.LoginView;
+
 /**
  *
  * @author aslam

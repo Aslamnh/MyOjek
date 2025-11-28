@@ -6,6 +6,9 @@ package myojektest;
 
 import java.time.LocalDate;
 import javax.swing.JOptionPane;
+import myojektest.Order;
+import myojektest.OrderController;
+import java.awt.event.ActionListener;
 
 /**
  *
@@ -235,6 +238,13 @@ public class FormOrderView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnPesanActionPerformed
 
+    public void addPesanListener(ActionListener listenForPesanButton) {
+        btnPesan.addActionListener(listenForPesanButton);
+    }
+    
+    public void addJarakChangeListener(ActionListener listenForJarakChange) {
+        txtJarak.addActionListener(listenForJarakChange); 
+    }
     /**
      * @param args the command line arguments
      */

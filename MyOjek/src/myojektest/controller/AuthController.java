@@ -1,4 +1,8 @@
-package myojektest;
+package myojektest.controller;
+
+import myojektest.AuthService;
+import myojektest.Driver;
+import myojektest.Passenger;
 
 public class AuthController {
 

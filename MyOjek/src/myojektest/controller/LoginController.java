@@ -2,9 +2,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package myojektest;
+package myojektest.controller;
 
+import myojektest.view.LoginView;
+import myojektest.view.RegisterView;
 import javax.swing.JOptionPane;
+import myojektest.MainPassanger;
+import myojektest.Passenger;
+import myojektest.PassengerDAO;
+import myojektest.DriverOrder;
 
 /**
  *
@@ -33,9 +39,13 @@ public class LoginController {
         if (authenticatedPassenger != null) {
             JOptionPane.showMessageDialog(view, "Masuk Berhasil! Selamat datang, " + authenticatedPassenger.nama + ".", "Sukses", JOptionPane.INFORMATION_MESSAGE);
             view.dispose();
-            if (!view.driver)
+            if (!view.driver) 
               java.awt.EventQueue.invokeLater(() -> {      
             new MainPassanger(noHp).setVisible(true);
+              });
+            else
+              java.awt.EventQueue.invokeLater(() -> {      
+            new DriverOrder().setVisible(true);
         });
             
             
