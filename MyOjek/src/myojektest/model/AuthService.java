@@ -1,4 +1,4 @@
-package myojektest;
+package myojektest.model;
 
 import java.security.MessageDigest;
 import java.security.SecureRandom;

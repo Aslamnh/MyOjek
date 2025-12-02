@@ -1,5 +1,6 @@
-package myojektest;
+package myojektest.model;
 
+import myojektest.model.Database;
 import java.sql.*;
 import java.util.ArrayList;
 

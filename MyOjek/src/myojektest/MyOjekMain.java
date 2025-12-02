@@ -4,6 +4,7 @@
  */
 package myojektest;
 
+import myojektest.model.PassengerDAO;
 import myojektest.view.LoginView;
 
 /**

@@ -2,13 +2,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package myojektest;
+package myojektest.view;
 
 import java.time.LocalDate;
 import javax.swing.JOptionPane;
-import myojektest.Order;
-import myojektest.OrderController;
+import myojektest.model.Order;
+import myojektest.controller.OrderController;
 import java.awt.event.ActionListener;
+import myojektest.model.Order;
+import myojektest.controller.OrderController;
+import myojektest.controller.FormOrderController;
 
 /**
  *
@@ -23,7 +26,54 @@ public class FormOrderView extends javax.swing.JFrame {
      */
     public FormOrderView() {
         initComponents();
-        lblAdminVal.setText("Rp. " + OrderController.admin);
+        //lblAdminVal.setText("Rp. " + OrderController.admin);
+        
+        Order orderModel = new Order();
+        OrderController orderController = new OrderController();
+        new FormOrderController(this, orderModel, orderController);
+    }
+    
+    //untuk JarakChangeListener
+    //getter
+    public String getJarakInput() {
+        return txtJarak.getText();
+    }
+
+    public String getAlamatDari() {
+        return txtDari.getText();
+    }
+    public void showError(String message) {
+        JOptionPane.showMessageDialog(this, message, "Error", JOptionPane.ERROR_MESSAGE);
+    }
+
+    //setter
+    public void setAdminLabelText(String text) {
+        lblAdminVal.setText(text);
+    }
+
+    public void setBiayaValText(String text) {
+        lblBiayaVal.setText(text);
+    }
+
+    public void setTotalValText(String text) {
+        lblTotalVal.setText(text);
+    }
+    
+    //untuk PesanListener
+    public String getAlamatTujuan() {
+        return txtTujuan.getText();
+    }
+
+    public String getSelectedTipe() {
+        return (String) cmbTipe.getSelectedItem(); 
+    }
+
+    public void showSuccess(String message) {
+        JOptionPane.showMessageDialog(this, message, "Sukses", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    public void showWarning(String message) {
+        JOptionPane.showMessageDialog(this, message, "Peringatan", JOptionPane.WARNING_MESSAGE);
     }
 
     /**
@@ -180,62 +230,62 @@ public class FormOrderView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtJarakActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtJarakActionPerformed
-        // TODO add your handling code here:
-        String input = txtJarak.getText();
-        try {
-            int jarak = Integer.parseInt(input);
-            int harga = jarak * 5000;
-            lblBiayaVal.setText("Rp " + harga);
-            OrderController.setHarga(harga);
-
-            lblTotalVal.setText("Rp " + OrderController.total);
-
-        } catch (NumberFormatException e) {
-            lblBiayaVal.setText("Input tidak valid");
-        }
+//        // TODO add your handling code here:
+//        String input = txtJarak.getText();
+//        try {
+//            int jarak = Integer.parseInt(input);
+//            int harga = jarak * 5000;
+//            lblBiayaVal.setText("Rp " + harga);
+//            OrderController.setHarga(harga);
+//
+//            lblTotalVal.setText("Rp " + OrderController.total);
+//
+//        } catch (NumberFormatException e) {
+//            lblBiayaVal.setText("Input tidak valid");
+//        }
     }//GEN-LAST:event_txtJarakActionPerformed
 
     private void btnPesanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPesanActionPerformed
-        // TODO add your handling code here:
-        try {
-            String asal = txtDari.getText();
-            String tujuan = txtTujuan.getText();
-            String jarakStr = txtJarak.getText();
-            
-            if (asal.isEmpty() || tujuan.isEmpty() || jarakStr.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Harap isi semua data!", "Peringatan", JOptionPane.WARNING_MESSAGE);
-                return;
-            }
-            
-            float jarak = Float.parseFloat(jarakStr);
-            int hargaDasar = (int) (jarak * 5000);
-            OrderController.setHarga(hargaDasar);
-            
-            Order orderBaru = new Order();
-            orderBaru.alamatJemput = asal;
-            orderBaru.alamatTujuan = tujuan;
-            orderBaru.jarak_km = jarak;
-            orderBaru.biaya = OrderController.total; 
-            orderBaru.tanggal = LocalDate.now().toString();
-            
-            orderBaru.passenger_id = 1;
-            orderBaru.driver_id = 1;
-
-            // 3. Kirim ke Controller
-            boolean sukses = OrderController.newOrder(orderBaru);
-
-            // 4. Tampilkan Alert Berhasil/Gagal
-            if (sukses) {
-                JOptionPane.showMessageDialog(this, "Order Berhasil Disubmit!", "Sukses", JOptionPane.INFORMATION_MESSAGE);
-            } else {
-                JOptionPane.showMessageDialog(this, "Gagal menyimpan data ke Database.", "Error", JOptionPane.ERROR_MESSAGE);
-            }
-
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(this, "Format Jarak harus angka!", "Error", JOptionPane.ERROR_MESSAGE);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Terjadi kesalahan: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        }
+//        // TODO add your handling code here:
+//        try {
+//            String asal = txtDari.getText();
+//            String tujuan = txtTujuan.getText();
+//            String jarakStr = txtJarak.getText();
+//            
+//            if (asal.isEmpty() || tujuan.isEmpty() || jarakStr.isEmpty()) {
+//                JOptionPane.showMessageDialog(this, "Harap isi semua data!", "Peringatan", JOptionPane.WARNING_MESSAGE);
+//                return;
+//            }
+//            
+//            float jarak = Float.parseFloat(jarakStr);
+//            int hargaDasar = (int) (jarak * 5000);
+//            OrderController.setHarga(hargaDasar);
+//            
+//            Order orderBaru = new Order();
+//            orderBaru.alamatJemput = asal;
+//            orderBaru.alamatTujuan = tujuan;
+//            orderBaru.jarak_km = jarak;
+//            orderBaru.biaya = OrderController.total; 
+//            orderBaru.tanggal = LocalDate.now().toString();
+//            
+//            orderBaru.passenger_id = 1;
+//            orderBaru.driver_id = 1;
+//
+//            // 3. Kirim ke Controller
+//            boolean sukses = OrderController.newOrder(orderBaru);
+//
+//            // 4. Tampilkan Alert Berhasil/Gagal
+//            if (sukses) {
+//                JOptionPane.showMessageDialog(this, "Order Berhasil Disubmit!", "Sukses", JOptionPane.INFORMATION_MESSAGE);
+//            } else {
+//                JOptionPane.showMessageDialog(this, "Gagal menyimpan data ke Database.", "Error", JOptionPane.ERROR_MESSAGE);
+//            }
+//
+//        } catch (NumberFormatException e) {
+//            JOptionPane.showMessageDialog(this, "Format Jarak harus angka!", "Error", JOptionPane.ERROR_MESSAGE);
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(this, "Terjadi kesalahan: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+//        }
     }//GEN-LAST:event_btnPesanActionPerformed
 
     public void addPesanListener(ActionListener listenForPesanButton) {
@@ -244,6 +294,10 @@ public class FormOrderView extends javax.swing.JFrame {
     
     public void addJarakChangeListener(ActionListener listenForJarakChange) {
         txtJarak.addActionListener(listenForJarakChange); 
+    }
+    
+    public void addJarakDocumentListener(javax.swing.event.DocumentListener listenForJarakChange) {
+        txtJarak.getDocument().addDocumentListener(listenForJarakChange);
     }
     /**
      * @param args the command line arguments

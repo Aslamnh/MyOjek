@@ -2,13 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package myojektest;
+package myojektest.view;
 
 /**
  *
  * @author rafae
  */
-public class MainPassanger2 extends javax.swing.JFrame {
+public class MainPassengerView extends javax.swing.JFrame {
 
     /**
      * Creates new form LoginView
@@ -16,7 +16,7 @@ public class MainPassanger2 extends javax.swing.JFrame {
     
     
     public String nohp;
-    public MainPassanger2(String nohp) {
+    public MainPassengerView(String nohp) {
         initComponents();
         this.nohp=nohp;
     }
@@ -132,12 +132,69 @@ public class MainPassanger2 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void KemanaFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KemanaFieldActionPerformed
+    java.awt.EventQueue.invokeLater(() -> {      
+            new FormOrderView().setVisible(true);
+        });
+    }//GEN-LAST:event_KemanaFieldActionPerformed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void ButtonMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMasukActionPerformed
+
+        //auth
+        
+        if(true){
+        
+        }
+
+    }//GEN-LAST:event_ButtonMasukActionPerformed
+
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
+
+    private void KemanaFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_KemanaFieldMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_KemanaFieldMouseClicked
+
+
     private void MotorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MotorButtonActionPerformed
     java.awt.EventQueue.invokeLater(() -> {      
             new FormOrderView().setVisible(true);
         });
 
     }//GEN-LAST:event_MotorButtonActionPerformed
+
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+ java.awt.EventQueue.invokeLater(() -> {      
+            new FormOrderView().setVisible(true);
+        });
+
+
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+ java.awt.EventQueue.invokeLater(() -> {      
+            new FormOrderView().setVisible(true);
+        });
+
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+ java.awt.EventQueue.invokeLater(() -> {      
+            new FormOrderView().setVisible(true);
+        });
+
+    }//GEN-LAST:event_jButton6ActionPerformed
+
 
     /**
      * @param args the command line arguments
@@ -156,14 +213,18 @@ public class MainPassanger2 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainPassanger2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainPassengerView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainPassanger2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainPassengerView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainPassanger2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainPassengerView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainPassanger2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainPassengerView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -172,7 +233,7 @@ public class MainPassanger2 extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainPassanger2(null).setVisible(true);
+                new MainPassengerView(null).setVisible(true);
             }
         });
     }

@@ -7,8 +7,8 @@ package myojektest.controller;
 import myojektest.view.LoginView;
 import myojektest.view.RegisterView;
 import javax.swing.JOptionPane;
-import myojektest.Passenger;
-import myojektest.PassengerDAO;
+import myojektest.model.Passenger;
+import myojektest.model.PassengerDAO;
 
 /**
  *

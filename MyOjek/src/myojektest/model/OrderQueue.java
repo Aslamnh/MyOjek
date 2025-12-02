@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package myojektest;
+package myojektest.model;
 
 import java.util.ArrayList;
 
@@ -11,12 +11,12 @@ import java.util.ArrayList;
  * @author rafae
  */
 public class OrderQueue {
-        private static ArrayList<Order> orders= new ArrayList<Order>();
+        private static ArrayList<Order> orders = new ArrayList<Order>();
     
-    static void newOrder(Order order){
+    public static void newOrder(Order order){
         orders.addFirst(order);
         OrderDAO.insert(order);
-        javax.swing.JOptionPane.showMessageDialog(order.guiPassanger, "Pemesanan Order Berhasil, Menunggu Driver");
+        javax.swing.JOptionPane.showMessageDialog(order.guiPassenger, "Pemesanan Order Berhasil, Menunggu Driver");
     }
 
 

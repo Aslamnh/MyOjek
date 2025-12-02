@@ -5,7 +5,7 @@
 package myojektest.view;
 
 import java.awt.event.ActionListener;
-import myojektest.PassengerDAO;
+import myojektest.model.PassengerDAO;
 import myojektest.controller.RegisterController;
 
 /**

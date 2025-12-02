@@ -7,10 +7,10 @@ package myojektest.controller;
 import myojektest.view.LoginView;
 import myojektest.view.RegisterView;
 import javax.swing.JOptionPane;
-import myojektest.MainPassanger;
-import myojektest.Passenger;
-import myojektest.PassengerDAO;
-import myojektest.DriverOrder;
+import myojektest.view.MainPassengerView;
+import myojektest.model.Passenger;
+import myojektest.model.PassengerDAO;
+import myojektest.view.MainDriverView;
 
 /**
  *
@@ -41,11 +41,11 @@ public class LoginController {
             view.dispose();
             if (!view.driver) 
               java.awt.EventQueue.invokeLater(() -> {      
-            new MainPassanger(noHp).setVisible(true);
+            new MainPassengerView(noHp).setVisible(true);
               });
             else
               java.awt.EventQueue.invokeLater(() -> {      
-            new DriverOrder().setVisible(true);
+//            new MainDriverView().setVisible(true);
         });
             
             

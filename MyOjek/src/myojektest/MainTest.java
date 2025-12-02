@@ -1,5 +1,12 @@
 package myojektest;
 
+import myojektest.model.Passenger;
+import myojektest.model.OrderDAO;
+import myojektest.model.Order;
+import myojektest.model.PassengerDAO;
+import myojektest.model.DriverDAO;
+import myojektest.model.Driver;
+
 
 public class MainTest {
     public static void main(String[] args) {
@@ -26,8 +33,8 @@ public class MainTest {
 
         Order o = new Order();
         o.tanggal = "2025-01-01";
-        o.alamatJemput = "Jalan Mawar";
-        o.alamatTujuan = "Jalan Melati";
+        o.setAlamatJemput("Jalan Mawar");
+        o.setAlamatTujuan("Jalan Melati");
         o.passenger_id = 1;
         o.driver_id = 1;
         o.biaya = 15000;

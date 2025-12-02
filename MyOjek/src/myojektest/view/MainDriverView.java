@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package myojektest;
+package myojektest.view;
 
+import myojektest.model.Database;
 import javax.swing.JOptionPane;
 import java.sql.*;
 import javax.swing.table.DefaultTableModel;
@@ -12,12 +13,12 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Muhammad Dzaky
  */
-public class DriverOrder extends javax.swing.JFrame {
+public class MainDriverView extends javax.swing.JFrame {
 
     /**
      * Creates new form DriverOrder
      */
-    public DriverOrder() {
+    public MainDriverView() {
         initComponents();
         loadPesanan();
         BtnOrderan.setEnabled(false);
@@ -213,20 +214,23 @@ public class DriverOrder extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DriverOrder.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainDriverView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DriverOrder.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainDriverView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DriverOrder.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainDriverView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DriverOrder.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(MainDriverView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DriverOrder().setVisible(true);
+                new MainDriverView().setVisible(true);
             }
         });
     }
