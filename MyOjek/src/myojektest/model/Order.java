@@ -87,6 +87,9 @@ public class Order {
     public int getPassengerID() {
         return passenger_id;
     }
+    public void setPassengerID(int id) {
+        passenger_id=id;
+    }
     public int getDriverID() {
         return driver_id;
     }
