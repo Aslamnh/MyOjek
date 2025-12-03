@@ -21,6 +21,10 @@ public class FormOrderView extends javax.swing.JFrame {
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FormOrderView.class.getName());
 
+    
+    
+    
+    
     /**
      * Creates new form NewJFrame
      */
@@ -31,6 +35,16 @@ public class FormOrderView extends javax.swing.JFrame {
         Order orderModel = new Order();
         OrderController orderController = new OrderController();
         new FormOrderController(this, orderModel, orderController);
+    }
+    
+    
+    private String NoHP;
+    
+    public void setNoHP(String noHp){
+       this.NoHP=noHp;
+    }
+    public String getNoHP(){
+      return NoHP;
     }
     
     //untuk JarakChangeListener
