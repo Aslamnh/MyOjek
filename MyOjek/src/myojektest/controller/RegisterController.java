@@ -9,6 +9,7 @@ import myojektest.view.RegisterView;
 import javax.swing.JOptionPane;
 import myojektest.model.Passenger;
 import myojektest.model.PassengerDAO;
+import myojektest.model.OrderDAO;
 
 /**
  *
@@ -17,10 +18,12 @@ import myojektest.model.PassengerDAO;
 public class RegisterController {
     private RegisterView view;
     private PassengerDAO dao;
+    private OrderDAO orderDAO;
 
-    public RegisterController(RegisterView view, PassengerDAO dao) {
+    public RegisterController(RegisterView view, PassengerDAO dao, OrderDAO orderDAO) {
         this.view = view;
         this.dao = dao;
+        this.orderDAO = orderDAO;
         this.view.addRegisterListener(e -> handleRegister());
     }
 
@@ -56,6 +59,6 @@ public class RegisterController {
 
         JOptionPane.showMessageDialog(view, "Pendaftaran Berhasil! Silakan Masuk.", "Sukses", JOptionPane.INFORMATION_MESSAGE);
         view.dispose();
-        new LoginView(dao).setVisible(true);
+        new LoginView(dao, orderDAO).setVisible(true);
     }
 }

@@ -19,14 +19,13 @@ public class Order {
     FormOrderView guiPassenger;
     String driverName;
     boolean accepted;
-    boolean finisihed;
+    boolean finished;
     public int order_id;
     public String tanggal;
     public int passenger_id;
     public int driver_id;
     public float biaya;
     public float jarak_km;
-    String DriverName;
     
     public static final int ADMIN_FEE = 2000;
 
@@ -43,23 +42,8 @@ public class Order {
     public Order() {
     }
     
-    // Asumsi: setBiaya diubah dari float ke int/float tergantung kebutuhan
     public void setBiaya(int totalBiaya) { 
-        // Asumsi variabel 'biaya' diubah menjadi private int totalBiaya
-        // Jika menggunakan float, set float, dan perbaiki tipe data di OrderController
-        this.biaya = totalBiaya; // Ganti jika variabel 'biaya' diubah
-    }
-    
-    public void setTipeLayanan(String tipe) {
-        // Asumsi ada variabel private String tipeLayanan;
-        // this.tipeLayanan = tipe;
-    }
-    
-    // Tambahkan method saveOrder() yang dipanggil Core Controller
-    public boolean saveOrder() {
-        // Simulasi Logika Penyimpanan ke DB (OrderDAO)
-        // return OrderDAO.insert(this); // Jika menggunakan OrderDAO
-        return true; 
+        this.biaya = totalBiaya;
     }
     
     public boolean getAccepted() {
@@ -93,9 +77,28 @@ public class Order {
     public void setTipeLayanan() {
 
     }
-    public static void main(String[] args) {
-        
+    
+    public String getPassengerName() {
+        return passengerName;
     }
-
+    public String getDriverName() {
+        return driverName;
+    }
+    public int getPassengerID() {
+        return passenger_id;
+    }
+    public int getDriverID() {
+        return driver_id;
+    }
+    public String getTanggal() {
+        return tanggal;
+    }
+    public float getTotal() {
+        return biaya;
+    }
+    public String getStatus() {
+        if (!accepted) return "NOT ACCEPTED";
+        else return "ACCEPTED";
+    }
         
 }

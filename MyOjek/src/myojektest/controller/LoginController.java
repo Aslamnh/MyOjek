@@ -11,6 +11,7 @@ import myojektest.view.MainPassengerView;
 import myojektest.model.Passenger;
 import myojektest.model.PassengerDAO;
 import myojektest.view.MainDriverView;
+import myojektest.model.OrderDAO;
 
 /**
  *
@@ -19,10 +20,12 @@ import myojektest.view.MainDriverView;
 public class LoginController {
     private LoginView view;
     private PassengerDAO dao;
+    private OrderDAO orderDAO;
 
-    public LoginController(LoginView view, PassengerDAO dao) {
+    public LoginController(LoginView view, PassengerDAO dao, OrderDAO orderDAO) {
         this.view = view;
         this.dao = dao;
+        this.orderDAO = orderDAO;
         this.view.addLoginListener(e -> handleLogin());
         this.view.addSwitchToRegisterListener(e -> switchToRegister());
     }
@@ -41,11 +44,11 @@ public class LoginController {
             view.dispose();
             if (!view.driver) 
               java.awt.EventQueue.invokeLater(() -> {      
-            new MainPassengerView(noHp).setVisible(true);
+                  new MainPassengerView(orderDAO, noHp).setVisible(true);
               });
             else
               java.awt.EventQueue.invokeLater(() -> {      
-//            new MainDriverView().setVisible(true);
+                  new MainDriverView(orderDAO).setVisible(true);
         });
             
             
@@ -57,6 +60,6 @@ public class LoginController {
     
     private void switchToRegister() {
         view.dispose();
-        new RegisterView(this.dao).setVisible(true);
+        new RegisterView(this.dao, this.orderDAO).setVisible(true);
     }
 }

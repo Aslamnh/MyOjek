@@ -6,6 +6,7 @@ package myojektest;
 
 import myojektest.model.PassengerDAO;
 import myojektest.view.LoginView;
+import myojektest.model.OrderDAO;
 
 /**
  *
@@ -18,7 +19,7 @@ public class MyOjekMain {
      */
     public static void main(String[] args) {
          java.awt.EventQueue.invokeLater(() -> {
-            new LoginView(new PassengerDAO()).setVisible(true);
+            new LoginView(new PassengerDAO(), new OrderDAO()).setVisible(true);
         });
        
     }

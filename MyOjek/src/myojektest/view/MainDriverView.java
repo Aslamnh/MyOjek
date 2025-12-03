@@ -4,6 +4,8 @@
  */
 package myojektest.view;
 
+import myojektest.model.OrderDAO;
+
 import myojektest.model.Database;
 import javax.swing.JOptionPane;
 import java.sql.*;
@@ -18,9 +20,13 @@ public class MainDriverView extends javax.swing.JFrame {
     /**
      * Creates new form DriverOrder
      */
-    public MainDriverView() {
+    
+    private OrderDAO orderDAO;
+    
+    public MainDriverView(OrderDAO orderDAO) {
         initComponents();
         loadPesanan();
+        this.orderDAO = orderDAO;
         BtnOrderan.setEnabled(false);
     }
 
@@ -40,6 +46,7 @@ public class MainDriverView extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         MyOjek = new javax.swing.JLabel();
         BtnOrderan = new javax.swing.JButton();
+        riwayatButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -99,6 +106,13 @@ public class MainDriverView extends javax.swing.JFrame {
             }
         });
 
+        riwayatButton.setText("Lihat Riwayat");
+        riwayatButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                riwayatButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -109,7 +123,10 @@ public class MainDriverView extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 348, Short.MAX_VALUE)
                     .addComponent(Teks, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(BtnOrderan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(BtnOrderan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(riwayatButton, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -118,7 +135,9 @@ public class MainDriverView extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Teks)
-                .addGap(34, 34, 34)
+                .addGap(5, 5, 5)
+                .addComponent(riwayatButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(BtnOrderan)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 579, Short.MAX_VALUE)
@@ -169,6 +188,13 @@ public class MainDriverView extends javax.swing.JFrame {
     private void PesananTabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PesananTabelMouseClicked
         BtnOrderan.setEnabled(true);
     }//GEN-LAST:event_PesananTabelMouseClicked
+
+    private void riwayatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_riwayatButtonActionPerformed
+        this.dispose();
+        java.awt.EventQueue.invokeLater(() -> {      
+            new DriverHistoryView(orderDAO).setVisible(true);
+        });
+    }//GEN-LAST:event_riwayatButtonActionPerformed
 
     
     public void loadPesanan(){
@@ -230,7 +256,7 @@ public class MainDriverView extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainDriverView().setVisible(true);
+                new MainDriverView(new OrderDAO()).setVisible(true);
             }
         });
     }
@@ -243,5 +269,6 @@ public class MainDriverView extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton riwayatButton;
     // End of variables declaration//GEN-END:variables
 }

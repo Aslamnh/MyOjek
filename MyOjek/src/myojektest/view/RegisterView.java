@@ -6,6 +6,7 @@ package myojektest.view;
 
 import java.awt.event.ActionListener;
 import myojektest.model.PassengerDAO;
+import myojektest.model.OrderDAO;
 import myojektest.controller.RegisterController;
 
 /**
@@ -17,9 +18,9 @@ public class RegisterView extends javax.swing.JFrame {
     /**
      * Creates new form LoginView
      */
-    public RegisterView(PassengerDAO dao) {
+    public RegisterView(PassengerDAO dao, OrderDAO orderDAO) {
         initComponents();
-        new RegisterController(this, dao);
+        new RegisterController(this, dao, orderDAO);
     }
     
     public javax.swing.JTextField getNamaField() {

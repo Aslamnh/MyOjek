@@ -52,7 +52,7 @@ public class OrderDAO {
             ps.setFloat(6, o.biaya);
             ps.setFloat(7, o.jarak_km);
             ps.setInt(8, o.accepted ? 1 : 0);
-            ps.setInt(9, o.finisihed ? 1 : 0);
+            ps.setInt(9, o.finished ? 1 : 0);
 
             ps.executeUpdate();
 
@@ -110,7 +110,7 @@ public class OrderDAO {
             ps.setFloat(6, o.biaya);
             ps.setFloat(7, o.jarak_km);
             ps.setInt(8, o.accepted ? 1 : 0);
-            ps.setInt(9, o.finisihed ? 1 : 0);
+            ps.setInt(9, o.finished ? 1 : 0);
             ps.setInt(10, o.order_id);
 
             ps.executeUpdate();
@@ -182,6 +182,123 @@ public class OrderDAO {
 
         return list;
     }
+    
+    //Find Order from order_id
+    public Order findOrder(int id) {
+        String sql = "SELECT * FROM ride_order WHERE order_id=?";
+        Order o = null;
+
+        try (Connection c = Database.getConnection();
+            PreparedStatement ps = c.prepareStatement(sql)) {
+
+            ps.setInt(1, id);
+            
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    o = new Order();
+                    
+                    o.order_id = rs.getInt("order_id");
+                    o.passenger_id = rs.getInt("passenger_id");
+                    o.driver_id = rs.getInt("driver_id");
+                    o.setAlamatJemput(rs.getString("alamat_jemput"));
+                    o.setAlamatTujuan(rs.getString("alamat_antar"));
+                    o.setJarak_km(rs.getFloat("jarak_km"));
+                    o.setBiaya(rs.getInt("biaya"));
+                    o.setTanggal(rs.getString("tanggal"));
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        return o;
+    }
+    
+    //Find user by ID for history
+    public ArrayList<Order> findPassenger(int id) {
+        String sql = "SELECT * FROM ride_order WHERE passenger_id=?";
+        ArrayList<Order> orderList = new ArrayList<>();
+
+        try (Connection c = Database.getConnection();
+            PreparedStatement ps = c.prepareStatement(sql)) {
+
+            ps.setInt(1, id);
+            
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    Order o = new Order();
+                    
+                    o.order_id = rs.getInt("order_id");
+                    o.passenger_id = rs.getInt("passenger_id");
+                    o.driver_id = rs.getInt("driver_id");
+                    o.setAlamatJemput(rs.getString("alamat_jemput"));
+                    o.setAlamatTujuan(rs.getString("alamat_antar"));
+                    o.setJarak_km(rs.getFloat("jarak_km"));
+                    o.setBiaya(rs.getInt("biaya"));
+                    o.setTanggal(rs.getString("tanggal"));
+                
+                    orderList.add(o);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        return orderList;
+    }
+    
+    public ArrayList<Order> findDriver(int id) {
+        String sql = "SELECT * FROM ride_order WHERE driver_id=?";
+        ArrayList<Order> orderList = new ArrayList<>();
+
+        try (Connection c = Database.getConnection();
+            PreparedStatement ps = c.prepareStatement(sql)) {
+
+            ps.setInt(1, id);
+            
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    Order o = new Order();
+                    
+                    o.order_id = rs.getInt("order_id");
+                    o.passenger_id = rs.getInt("passenger_id");
+                    o.driver_id = rs.getInt("driver_id");
+                    o.setAlamatJemput(rs.getString("alamat_jemput"));
+                    o.setAlamatTujuan(rs.getString("alamat_antar"));
+                    o.setJarak_km(rs.getFloat("jarak_km"));
+                    o.setBiaya(rs.getInt("biaya"));
+                    o.setTanggal(rs.getString("tanggal"));
+                
+                    orderList.add(o);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        return orderList;
+    }
+    
+    public int getIDFromHP(String nohp) {
+        String sql = "SELECT passenger_id FROM passenger WHERE no_hp = ?";
+        int passengerId = -1;
+
+        try (Connection c = Database.getConnection();
+             PreparedStatement ps = c.prepareStatement(sql)) {
+
+            ps.setString(1, nohp);
+
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    passengerId = rs.getInt("passenger_id");
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return passengerId;
+    }
 
 
     // Helper extract dari ResultSet
@@ -197,7 +314,7 @@ public class OrderDAO {
         o.biaya = rs.getFloat("biaya");
         o.jarak_km = rs.getFloat("jarak_km");
         o.accepted = rs.getInt("accepted") == 1;
-        o.finisihed = rs.getInt("finished") == 1;
+        o.finished = rs.getInt("finished") == 1;
 
         return o;
     }

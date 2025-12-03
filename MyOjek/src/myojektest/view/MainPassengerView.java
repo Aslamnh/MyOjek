@@ -4,6 +4,8 @@
  */
 package myojektest.view;
 
+import myojektest.model.OrderDAO;
+
 /**
  *
  * @author rafae
@@ -16,8 +18,16 @@ public class MainPassengerView extends javax.swing.JFrame {
     
     
     public String nohp;
+    public OrderDAO orderDAO;
+    
     public MainPassengerView(String nohp) {
         initComponents();
+        this.nohp=nohp;
+    }
+    
+    public MainPassengerView(OrderDAO orderDAO, String nohp) {
+        initComponents();
+        this.orderDAO = orderDAO;
         this.nohp=nohp;
     }
 
@@ -36,6 +46,7 @@ public class MainPassengerView extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        riwayatButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -84,6 +95,14 @@ public class MainPassengerView extends javax.swing.JFrame {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("*klik logo untuk order");
 
+        riwayatButton.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        riwayatButton.setText("Lihat Riwayat");
+        riwayatButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                riwayatButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout backgroundLayout = new javax.swing.GroupLayout(background);
         background.setLayout(backgroundLayout);
         backgroundLayout.setHorizontalGroup(
@@ -96,12 +115,15 @@ public class MainPassengerView extends javax.swing.JFrame {
                         .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, backgroundLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 110, Short.MAX_VALUE)
                         .addComponent(MotorButton)
                         .addGap(116, 116, 116))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, backgroundLayout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())))
+            .addGroup(backgroundLayout.createSequentialGroup()
+                .addComponent(riwayatButton, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         backgroundLayout.setVerticalGroup(
             backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -109,7 +131,9 @@ public class MainPassengerView extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel7)
-                .addGap(173, 173, 173)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(riwayatButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(135, 135, 135)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(MotorButton)
@@ -142,9 +166,12 @@ public class MainPassengerView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void riwayatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_riwayatButtonActionPerformed
+        this.dispose();
+        java.awt.EventQueue.invokeLater(() -> {      
+            new PassengerHistoryView(orderDAO, nohp).setVisible(true);
+        });
+    }//GEN-LAST:event_riwayatButtonActionPerformed
 
     private void ButtonMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ButtonMasukActionPerformed
 
@@ -245,5 +272,6 @@ public class MainPassengerView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton riwayatButton;
     // End of variables declaration//GEN-END:variables
 }
