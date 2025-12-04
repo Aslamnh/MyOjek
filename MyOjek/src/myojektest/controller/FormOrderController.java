@@ -119,10 +119,6 @@ public class FormOrderController {
                 orderModel.setJarak_km(jarak);
                 orderModel.setTanggal(LocalDate.now().toString()); 
                 orderModel.setBiaya(totalBiaya); 
-<<<<<<< Updated upstream
-=======
-                orderModel.setPassengerID( PassengerDAO.getFiltered(null,orderView.getNoHP() , null, null).getFirst().passenger_id);;
->>>>>>> Stashed changes
 
                 boolean sukses = orderController.submitNewOrder(orderModel);
 
