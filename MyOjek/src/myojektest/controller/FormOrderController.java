@@ -127,6 +127,7 @@ public class FormOrderController {
                 orderModel.setBiaya(totalBiaya); 
                 orderModel.setPassengerID( PassengerDAO.getFiltered(null,orderView.getNoHP() , null, null).getFirst().passenger_id);
 
+                
                 boolean sukses = orderController.submitNewOrder(orderModel);
 
                 if (sukses) {
