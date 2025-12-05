@@ -5,6 +5,7 @@
 package myojektest.view;
 
 import myojektest.model.OrderDAO;
+import myojektest.model.DriverDAO;
 
 import myojektest.model.Database;
 import javax.swing.JOptionPane;
@@ -181,7 +182,8 @@ public class MainDriverView extends javax.swing.JFrame {
         try(Connection c = Database.getConnection();
             PreparedStatement ps = c.prepareStatement(sql)){
             ps.setInt(1, driverid);
-            ps.setInt(2, id);
+            //ps.setString(2, DriverDAO.findNameFromID(driverid));
+            ps.setInt(3, id);
             ps.executeUpdate();
             
             JOptionPane.showMessageDialog(this, "Orderan berhasil diambil");

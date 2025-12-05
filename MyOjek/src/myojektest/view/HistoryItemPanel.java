@@ -40,7 +40,7 @@ public class HistoryItemPanel extends javax.swing.JPanel {
     
     public void setHistoryItemDriver(Order o) {
         if (o.getDriverName() == null) labelNama.setText("Nama Driver: -");
-        else labelNama.setText("Nama: " + o.getPassengerName());
+        else labelNama.setText("Nama: " + o.getDriverName());
         if (o.getDriverID() == 0) labelID.setText("ID Driver: -");
         else labelID.setText("ID: " + o.getDriverID());
         if (o.getJemput() == null) labelAsal.setText("Alamat Asal: -");

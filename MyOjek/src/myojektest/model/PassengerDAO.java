@@ -171,6 +171,26 @@ public class PassengerDAO {
         }
     }
     
+    public static String findNameFromID(int passengerId) {
+        String sql = "SELECT nama FROM passenger WHERE passenger_id=?";
+        String nama = null;
+
+        try (Connection c = Database.getConnection();
+             PreparedStatement ps = c.prepareStatement(sql)) {
+
+            ps.setInt(1, passengerId);
+
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    nama = rs.getString("nama");
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return nama;
+    }
+    
     public Passenger authenticate(String no_hp, String password) {
         String sql = "SELECT * FROM passenger WHERE no_hp=? AND password=?";
         Passenger p = null;

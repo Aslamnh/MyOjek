@@ -125,7 +125,8 @@ public class FormOrderController {
                 orderModel.setJarak_km(jarak);
                 orderModel.setTanggal(LocalDate.now().toString()); 
                 orderModel.setBiaya(totalBiaya); 
-                orderModel.setPassengerID( PassengerDAO.getFiltered(null,orderView.getNoHP() , null, null).getFirst().passenger_id);;
+                int passengerId = PassengerDAO.getFiltered(null,orderView.getNoHP() , null, null).getFirst().passenger_id;
+                orderModel.setPassengerID(passengerId);
 
                 boolean sukses = orderController.submitNewOrder(orderModel);
 

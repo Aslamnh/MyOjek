@@ -77,12 +77,18 @@ public class Order {
     public void setTipeLayanan() {
 
     }
+    public void setPassengerName(String name) {
+        this.passengerName = name;
+    }
+    public void setDriverName(String name) {
+        this.driverName = name;
+    }
     
     public String getPassengerName() {
-        return passengerName;
+        return PassengerDAO.findNameFromID(getPassengerID());
     }
     public String getDriverName() {
-        return driverName;
+        return DriverDAO.findNameFromID(getDriverID());
     }
     public int getPassengerID() {
         return passenger_id;
