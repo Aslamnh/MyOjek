@@ -183,7 +183,7 @@ public class MainDriverView extends javax.swing.JFrame {
             PreparedStatement ps = c.prepareStatement(sql)){
             ps.setInt(1, driverid);
             //ps.setString(2, DriverDAO.findNameFromID(driverid));
-            ps.setInt(3, id);
+            ps.setInt(2, id);
             ps.executeUpdate();
             
             JOptionPane.showMessageDialog(this, "Orderan berhasil diambil");
