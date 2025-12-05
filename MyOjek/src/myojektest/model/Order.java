@@ -99,6 +99,15 @@ public class Order {
     public float getTotal() {
         return biaya;
     }
+    public String getTujuan() {
+        return alamatTujuan;
+    }
+    public String getJemput() {
+        return alamatJemput;
+    }
+    public float getBiaya() {
+        return biaya;
+    }
     public String getStatus() {
         if (!accepted) return "NOT ACCEPTED";
         else return "ACCEPTED";

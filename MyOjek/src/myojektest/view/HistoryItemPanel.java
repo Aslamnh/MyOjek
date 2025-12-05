@@ -21,9 +21,15 @@ public class HistoryItemPanel extends javax.swing.JPanel {
     
     public void setHistoryItemPassenger(Order o) {
         System.out.println("Item dibuat");
-                
-        labelNama.setText("Nama: " + o.getPassengerName());
-        labelID.setText("ID: " + o.getPassengerID());
+         
+        if (o.getPassengerName() == null) labelNama.setText("Nama Passenger: -");
+        else labelNama.setText("Nama: " + o.getPassengerName());
+        if (o.getPassengerID() == 0) labelID.setText("ID Passenger: -");
+        else labelID.setText("ID: " + o.getPassengerID());
+        if (o.getJemput() == null) labelAsal.setText("Alamat Asal: -");
+        else labelAsal.setText("Alamat Asal: " + o.getJemput());
+        if (o.getTujuan() == null) labelTujuan.setText("Alamat Tujuan: -");
+        else labelTujuan.setText("Alamat Tujuan: " + o.getTujuan());
         labelTanggal.setText("Tanggal Pemesanan: " + o.getTanggal());
         labelTotal.setText("Total Pembayaran: " + o.getTotal());
         labelStatus.setText("STATUS: " + o.getStatus());
@@ -33,8 +39,14 @@ public class HistoryItemPanel extends javax.swing.JPanel {
     }
     
     public void setHistoryItemDriver(Order o) {
-        labelNama.setText("Nama: " + o.getDriverName());
-        labelID.setText("ID: " + o.getDriverID());
+        if (o.getDriverName() == null) labelNama.setText("Nama Driver: -");
+        else labelNama.setText("Nama: " + o.getPassengerName());
+        if (o.getDriverID() == 0) labelID.setText("ID Driver: -");
+        else labelID.setText("ID: " + o.getDriverID());
+        if (o.getJemput() == null) labelAsal.setText("Alamat Asal: -");
+        else labelAsal.setText("Alamat Asal: " + o.getJemput());
+        if (o.getTujuan() == null) labelTujuan.setText("Alamat Tujuan: -");
+        else labelTujuan.setText("Alamat Tujuan: " + o.getTujuan());
         labelTanggal.setText("Tanggal Pemesanan: " + o.getTanggal());
         labelTotal.setText("Total Pembayaran: Rp." + o.getTotal());
         labelStatus.setText("STATUS: " + o.getStatus());
@@ -56,6 +68,8 @@ public class HistoryItemPanel extends javax.swing.JPanel {
         labelTanggal = new javax.swing.JLabel();
         labelTotal = new javax.swing.JLabel();
         labelStatus = new javax.swing.JLabel();
+        labelAsal = new javax.swing.JLabel();
+        labelTujuan = new javax.swing.JLabel();
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/myojektest/view/usericonsmall.PNG"))); // NOI18N
 
@@ -72,6 +86,10 @@ public class HistoryItemPanel extends javax.swing.JPanel {
         labelStatus.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         labelStatus.setText("STATUS: ");
 
+        labelAsal.setText("Alamat Asal: ");
+
+        labelTujuan.setText("Alamat Tujuan: ");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -83,7 +101,9 @@ public class HistoryItemPanel extends javax.swing.JPanel {
                     .addComponent(labelID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(labelTotal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(labelStatus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(labelNama, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(labelNama, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(labelAsal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(labelTujuan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -97,9 +117,13 @@ public class HistoryItemPanel extends javax.swing.JPanel {
                 .addComponent(labelTanggal)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(labelTotal)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelAsal)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelTujuan)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addComponent(labelStatus)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -117,9 +141,9 @@ public class HistoryItemPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -128,10 +152,12 @@ public class HistoryItemPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel labelAsal;
     private javax.swing.JLabel labelID;
     private javax.swing.JLabel labelNama;
     private javax.swing.JLabel labelStatus;
     private javax.swing.JLabel labelTanggal;
     private javax.swing.JLabel labelTotal;
+    private javax.swing.JLabel labelTujuan;
     // End of variables declaration//GEN-END:variables
 }

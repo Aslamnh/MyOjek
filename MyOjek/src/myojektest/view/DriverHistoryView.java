@@ -9,6 +9,7 @@ import myojektest.model.OrderDAO;
 
 import java.awt.event.ActionListener;
 import javax.swing.JPanel;
+import javax.swing.JLabel;
 
 /**
  *
@@ -20,14 +21,17 @@ public class DriverHistoryView extends javax.swing.JFrame {
      * Creates new form LoginView
      */
     
-    public DriverHistoryView(OrderDAO orderDAO) {
+    String nohp;
+    
+    public DriverHistoryView(OrderDAO orderDAO, String nohp) {
         initComponents();
+        this.nohp = nohp;
         JPanel historyContainer = getHistoryList();
         historyContainer.setLayout(new javax.swing.BoxLayout(
             historyContainer, 
             javax.swing.BoxLayout.Y_AXIS
         ));
-        new HistoryController(this, orderDAO);
+        new HistoryController(this, orderDAO, nohp);
     }
     
 //    public PassengerHistoryView() {
@@ -36,7 +40,14 @@ public class DriverHistoryView extends javax.swing.JFrame {
 //    }
     
     public JPanel getHistoryList() {
-        return HistoryList;
+        return historyList;
+    }
+    
+    public JLabel getLabelPendapatan() {
+        return labelPendapatan;
+    }
+    public void setLabelPendapatan(float h) {
+        labelPendapatan.setText("Total Pendapatan: Rp." + String.valueOf(h));
     }
     
     
@@ -59,7 +70,10 @@ public class DriverHistoryView extends javax.swing.JFrame {
         topBar = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
-        HistoryList = new javax.swing.JPanel();
+        eee = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        historyList = new javax.swing.JPanel();
+        labelPendapatan = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -78,7 +92,7 @@ public class DriverHistoryView extends javax.swing.JFrame {
             topBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, topBarLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 335, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         topBarLayout.setVerticalGroup(
@@ -96,16 +110,33 @@ public class DriverHistoryView extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout HistoryListLayout = new javax.swing.GroupLayout(HistoryList);
-        HistoryList.setLayout(HistoryListLayout);
-        HistoryListLayout.setHorizontalGroup(
-            HistoryListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 335, Short.MAX_VALUE)
+        javax.swing.GroupLayout historyListLayout = new javax.swing.GroupLayout(historyList);
+        historyList.setLayout(historyListLayout);
+        historyListLayout.setHorizontalGroup(
+            historyListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 333, Short.MAX_VALUE)
         );
-        HistoryListLayout.setVerticalGroup(
-            HistoryListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 661, Short.MAX_VALUE)
+        historyListLayout.setVerticalGroup(
+            historyListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 696, Short.MAX_VALUE)
         );
+
+        jScrollPane1.setViewportView(historyList);
+
+        javax.swing.GroupLayout eeeLayout = new javax.swing.GroupLayout(eee);
+        eee.setLayout(eeeLayout);
+        eeeLayout.setHorizontalGroup(
+            eeeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1)
+        );
+        eeeLayout.setVerticalGroup(
+            eeeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(eeeLayout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 698, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        labelPendapatan.setText("Total Pendapatan:");
 
         javax.swing.GroupLayout backgroundLayout = new javax.swing.GroupLayout(background);
         background.setLayout(backgroundLayout);
@@ -115,10 +146,11 @@ public class DriverHistoryView extends javax.swing.JFrame {
             .addGroup(backgroundLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(HistoryList, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(eee, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(backgroundLayout.createSequentialGroup()
                         .addComponent(btnBack)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(labelPendapatan, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         backgroundLayout.setVerticalGroup(
@@ -126,9 +158,11 @@ public class DriverHistoryView extends javax.swing.JFrame {
             .addGroup(backgroundLayout.createSequentialGroup()
                 .addComponent(topBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnBack)
+                .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnBack)
+                    .addComponent(labelPendapatan))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(HistoryList, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(eee, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -140,7 +174,7 @@ public class DriverHistoryView extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 749, Short.MAX_VALUE)
+            .addComponent(background, javax.swing.GroupLayout.DEFAULT_SIZE, 786, Short.MAX_VALUE)
         );
 
         pack();
@@ -151,10 +185,13 @@ public class DriverHistoryView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBackActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel HistoryList;
     private javax.swing.JPanel background;
     private javax.swing.JButton btnBack;
+    private javax.swing.JPanel eee;
+    private javax.swing.JPanel historyList;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel labelPendapatan;
     private javax.swing.JPanel topBar;
     // End of variables declaration//GEN-END:variables
 }

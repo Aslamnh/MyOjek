@@ -37,7 +37,7 @@ public class HistoryController {
         loadHistoryForPassenger(passengerId, view);
     }
     
-    public HistoryController(DriverHistoryView view, OrderDAO orderDAO) {
+    public HistoryController(DriverHistoryView view, OrderDAO orderDAO, String nohp) {
         this.viewDriverHistory = view;
         this.viewDriverHistory.addBackListener(e -> handleBackDriver());
         
@@ -69,6 +69,7 @@ public class HistoryController {
     
     public void loadHistoryForDriver(int driverId, DriverHistoryView view) {
         System.out.println("METHOD JALAN");
+        float totalPendapatan = 0;
         ArrayList<Order> orderList = orderDAO.findDriver(driverId);
         if (orderList.isEmpty()) System.out.println("LIST KOSONG");
         else System.out.println("UKURAN LIST: " + orderList.size());
@@ -80,8 +81,10 @@ public class HistoryController {
             HistoryItemPanel item = new HistoryItemPanel();
             item.setHistoryItemPassenger(order);
             container.add(item);
+            totalPendapatan += order.getBiaya();
         }
 
+        view.setLabelPendapatan(totalPendapatan);
         container.revalidate();
         container.repaint(); 
     }   
@@ -93,6 +96,6 @@ public class HistoryController {
     
     public void handleBackDriver() {
         viewDriverHistory.dispose();
-        new MainDriverView(this.orderDAO).setVisible(true);
+        new MainDriverView(this.orderDAO, this.nohp).setVisible(true);
     }
 }

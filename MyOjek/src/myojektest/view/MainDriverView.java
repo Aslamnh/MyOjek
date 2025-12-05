@@ -22,10 +22,12 @@ public class MainDriverView extends javax.swing.JFrame {
      */
     
     private OrderDAO orderDAO;
+    private String nohp;
     
-    public MainDriverView(OrderDAO orderDAO) {
+    public MainDriverView(OrderDAO orderDAO, String nohp) {
         initComponents();
         loadPesanan();
+        this.nohp = nohp;
         this.orderDAO = orderDAO;
         BtnOrderan.setEnabled(false);
     }
@@ -192,7 +194,7 @@ public class MainDriverView extends javax.swing.JFrame {
     private void riwayatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_riwayatButtonActionPerformed
         this.dispose();
         java.awt.EventQueue.invokeLater(() -> {      
-            new DriverHistoryView(orderDAO).setVisible(true);
+            new DriverHistoryView(orderDAO, nohp).setVisible(true);
         });
     }//GEN-LAST:event_riwayatButtonActionPerformed
 
@@ -256,7 +258,7 @@ public class MainDriverView extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MainDriverView(new OrderDAO()).setVisible(true);
+                //new MainDriverView(new OrderDAO(), ).setVisible(true);
             }
         });
     }
