@@ -24,8 +24,7 @@ public class OrderDAO {
                 jarak_km REAL,
                 accepted INTEGER DEFAULT 0,
                 finished INTEGER DEFAULT 0,
-                FOREIGN KEY(passenger_id) REFERENCES passenger(passenger_id),
-                FOREIGN KEY(driver_id) REFERENCES driver(driver_id)
+                FOREIGN KEY(passenger_id) REFERENCES passenger(passenger_id)
             );
         """;
 

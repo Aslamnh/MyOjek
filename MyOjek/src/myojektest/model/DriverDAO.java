@@ -86,6 +86,9 @@ public class DriverDAO {
         return list;
     }
 
+    
+    
+    
     public void update(Driver d) {
         String sql = "UPDATE driver SET no_hp=?,nama=?,password=?,simNumber=?,stnkNumber=?,plateNumber=? WHERE driver_id=?";
 

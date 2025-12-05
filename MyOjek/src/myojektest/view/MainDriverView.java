@@ -10,6 +10,7 @@ import myojektest.model.Database;
 import javax.swing.JOptionPane;
 import java.sql.*;
 import javax.swing.table.DefaultTableModel;
+import myojektest.model.PassengerDAO;
 
 /**
  *
@@ -23,6 +24,7 @@ public class MainDriverView extends javax.swing.JFrame {
     
     private OrderDAO orderDAO;
     private String nohp;
+    private int driverid;
     
     public MainDriverView(OrderDAO orderDAO, String nohp) {
         initComponents();
@@ -30,6 +32,11 @@ public class MainDriverView extends javax.swing.JFrame {
         this.nohp = nohp;
         this.orderDAO = orderDAO;
         BtnOrderan.setEnabled(false);
+        driverid= PassengerDAO.getFiltered(null, nohp, null, null).getFirst().passenger_id;
+        
+        
+        
+        
     }
 
     /**
@@ -169,12 +176,12 @@ public class MainDriverView extends javax.swing.JFrame {
         
         int id = Integer.parseInt(PesananTabel.getValueAt(row, 0).toString());
         
-        String sql = "UPDATE ride_order SET accepted = 1, finished = 1 WHERE order_id = ?";
+        String sql = "UPDATE ride_order SET accepted = 1, finished = 1 ,driver_id=? WHERE order_id = ?";
         
         try(Connection c = Database.getConnection();
             PreparedStatement ps = c.prepareStatement(sql)){
-            
-            ps.setInt(1, id);
+            ps.setInt(1, driverid);
+            ps.setInt(2, id);
             ps.executeUpdate();
             
             JOptionPane.showMessageDialog(this, "Orderan berhasil diambil");
