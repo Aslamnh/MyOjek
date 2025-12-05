@@ -134,7 +134,7 @@ public class MainPassenger2View extends javax.swing.JFrame {
 
     private void MotorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MotorButtonActionPerformed
     java.awt.EventQueue.invokeLater(() -> {      
-            new FormOrderView().setVisible(true);
+          //  new FormOrderView(this).setVisible(true);
         });
 
     }//GEN-LAST:event_MotorButtonActionPerformed

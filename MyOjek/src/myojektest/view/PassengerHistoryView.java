@@ -9,6 +9,7 @@ import myojektest.model.OrderDAO;
 
 import java.awt.event.ActionListener;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 /**
  *
@@ -36,7 +37,7 @@ public class PassengerHistoryView extends javax.swing.JFrame {
 //    }
     
     public JPanel getHistoryList() {
-        return HistoryList;
+        return historyList;
     }
     
     
@@ -59,7 +60,9 @@ public class PassengerHistoryView extends javax.swing.JFrame {
         topBar = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
-        HistoryList = new javax.swing.JPanel();
+        HistoryPanel = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        historyList = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -78,7 +81,7 @@ public class PassengerHistoryView extends javax.swing.JFrame {
             topBarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, topBarLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 335, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         topBarLayout.setVerticalGroup(
@@ -96,15 +99,28 @@ public class PassengerHistoryView extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout HistoryListLayout = new javax.swing.GroupLayout(HistoryList);
-        HistoryList.setLayout(HistoryListLayout);
-        HistoryListLayout.setHorizontalGroup(
-            HistoryListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 335, Short.MAX_VALUE)
+        javax.swing.GroupLayout historyListLayout = new javax.swing.GroupLayout(historyList);
+        historyList.setLayout(historyListLayout);
+        historyListLayout.setHorizontalGroup(
+            historyListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 329, Short.MAX_VALUE)
         );
-        HistoryListLayout.setVerticalGroup(
-            HistoryListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 661, Short.MAX_VALUE)
+        historyListLayout.setVerticalGroup(
+            historyListLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 650, Short.MAX_VALUE)
+        );
+
+        jScrollPane2.setViewportView(historyList);
+
+        javax.swing.GroupLayout HistoryPanelLayout = new javax.swing.GroupLayout(HistoryPanel);
+        HistoryPanel.setLayout(HistoryPanelLayout);
+        HistoryPanelLayout.setHorizontalGroup(
+            HistoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2)
+        );
+        HistoryPanelLayout.setVerticalGroup(
+            HistoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2)
         );
 
         javax.swing.GroupLayout backgroundLayout = new javax.swing.GroupLayout(background);
@@ -115,7 +131,7 @@ public class PassengerHistoryView extends javax.swing.JFrame {
             .addGroup(backgroundLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(HistoryList, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(HistoryPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(backgroundLayout.createSequentialGroup()
                         .addComponent(btnBack)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -128,7 +144,7 @@ public class PassengerHistoryView extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnBack)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(HistoryList, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(HistoryPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -151,10 +167,12 @@ public class PassengerHistoryView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBackActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel HistoryList;
+    private javax.swing.JPanel HistoryPanel;
     private javax.swing.JPanel background;
     private javax.swing.JButton btnBack;
+    private javax.swing.JPanel historyList;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPanel topBar;
     // End of variables declaration//GEN-END:variables
 }

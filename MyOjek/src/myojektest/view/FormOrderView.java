@@ -22,16 +22,16 @@ public class FormOrderView extends javax.swing.JFrame {
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FormOrderView.class.getName());
 
     
-    
+    MainPassengerView view;
     
     
     /**
      * Creates new form NewJFrame
      */
-    public FormOrderView() {
+    public FormOrderView(MainPassengerView view) {
         initComponents();
         //lblAdminVal.setText("Rp. " + OrderController.admin);
-        
+        this.view = view;
         Order orderModel = new Order();
         OrderController orderController = new OrderController();
         new FormOrderController(this, orderModel, orderController);
@@ -116,6 +116,7 @@ public class FormOrderView extends javax.swing.JFrame {
         lblTotal = new javax.swing.JLabel();
         txtTujuan = new javax.swing.JTextField();
         lblTotalVal = new javax.swing.JLabel();
+        btnBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -165,6 +166,9 @@ public class FormOrderView extends javax.swing.JFrame {
         lblTotalVal.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         lblTotalVal.setText("Rp. 0");
 
+        btnBack.setText("Back");
+        btnBack.addActionListener(this::btnBackActionPerformed);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -172,40 +176,49 @@ public class FormOrderView extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(sepTotal)
-                    .addComponent(lblTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtDari)
-                    .addComponent(txtTujuan)
-                    .addComponent(txtJarak)
-                    .addComponent(cmbTipe, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnPesan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblBiaya)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblBiayaVal))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblAdmin)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblAdminVal))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblTotal)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblTotalVal))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblDari)
-                            .addComponent(lblTujuan)
-                            .addComponent(lblJarak)
-                            .addComponent(lblTipe))
-                        .addGap(0, 306, Short.MAX_VALUE)))
-                .addGap(20, 20, 20))
+                            .addComponent(sepTotal)
+                            .addComponent(txtDari, javax.swing.GroupLayout.DEFAULT_SIZE, 361, Short.MAX_VALUE)
+                            .addComponent(txtTujuan)
+                            .addComponent(txtJarak)
+                            .addComponent(cmbTipe, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnPesan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblBiaya)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblBiayaVal))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblAdmin)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblAdminVal))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblTotal)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(lblTotalVal))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblTujuan)
+                                    .addComponent(lblJarak)
+                                    .addComponent(lblTipe)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(lblTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(20, 20, 20))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblDari)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addComponent(lblTitle)
-                .addGap(30, 30, 30)
+                .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTitle)
+                    .addComponent(btnBack))
+                .addGap(26, 26, 26)
                 .addComponent(lblDari)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtDari, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -302,6 +315,11 @@ public class FormOrderView extends javax.swing.JFrame {
 //        }
     }//GEN-LAST:event_btnPesanActionPerformed
 
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        this.dispose();
+        view.setVisible(true);
+    }//GEN-LAST:event_btnBackActionPerformed
+
     public void addPesanListener(ActionListener listenForPesanButton) {
         btnPesan.addActionListener(listenForPesanButton);
     }
@@ -335,10 +353,11 @@ public class FormOrderView extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new FormOrderView().setVisible(true));
+        // java.awt.EventQueue.invokeLater(() -> new FormOrderView().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBack;
     private javax.swing.JButton btnPesan;
     private javax.swing.JComboBox<String> cmbTipe;
     private javax.swing.JLabel lblAdmin;

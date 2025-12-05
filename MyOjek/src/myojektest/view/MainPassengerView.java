@@ -158,7 +158,7 @@ public class MainPassengerView extends javax.swing.JFrame {
 
     private void KemanaFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KemanaFieldActionPerformed
     java.awt.EventQueue.invokeLater(() -> {      
-            new FormOrderView().setVisible(true);
+            new FormOrderView(this).setVisible(true);
         });
     }//GEN-LAST:event_KemanaFieldActionPerformed
 
@@ -194,7 +194,7 @@ public class MainPassengerView extends javax.swing.JFrame {
 
     private void MotorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MotorButtonActionPerformed
     java.awt.EventQueue.invokeLater(() -> {      
-        FormOrderView form =    new FormOrderView();
+        FormOrderView form = new FormOrderView(this);
         form.setNoHP(nohp);
         form.setVisible(true);
             
@@ -205,7 +205,7 @@ public class MainPassengerView extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
  java.awt.EventQueue.invokeLater(() -> {      
-            new FormOrderView().setVisible(true);
+            new FormOrderView(this).setVisible(true);
         });
 
 
@@ -213,14 +213,14 @@ public class MainPassengerView extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
  java.awt.EventQueue.invokeLater(() -> {      
-            new FormOrderView().setVisible(true);
+            new FormOrderView(this).setVisible(true);
         });
 
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
  java.awt.EventQueue.invokeLater(() -> {      
-            new FormOrderView().setVisible(true);
+            new FormOrderView(this).setVisible(true);
         });
 
     }//GEN-LAST:event_jButton6ActionPerformed

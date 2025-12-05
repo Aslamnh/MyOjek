@@ -14,6 +14,7 @@ import myojektest.view.MainDriverView;
 
 import javax.swing.JPanel;
 import java.util.ArrayList;
+import javax.swing.JScrollPane;
 
 /**
  *
@@ -42,14 +43,14 @@ public class HistoryController {
         
         this.orderDAO = orderDAO;
 
-        int passengerId = orderDAO.getIDFromHP(nohp);
-        loadHistoryForDriver(passengerId, view);
+        int driverId = orderDAO.getIDFromHP(nohp);
+        loadHistoryForDriver(driverId, view);
     }
 
     public void loadHistoryForPassenger(int passengerId, PassengerHistoryView view) {
         System.out.println("METHOD JALAN");
-        //ArrayList<Order> orderList = orderDAO.findPassenger(passengerId); <- seharusnya ini tapi ga nemu
-        ArrayList<Order> orderList = orderDAO.findPassenger(Integer.parseInt(nohp));
+        ArrayList<Order> orderList = orderDAO.findPassenger(passengerId);
+        //ArrayList<Order> orderList = orderDAO.findPassenger(Integer.parseInt(nohp));
         if (orderList.isEmpty()) System.out.println("LIST KOSONG");
         else System.out.println("UKURAN LIST: " + orderList.size());
         
