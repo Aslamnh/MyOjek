@@ -3,18 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Github/MyOjek/MyOjek/src/myojektest/view/LoginView.java</file>
-            <file>file:/D:/Github/MyOjek/MyOjek/src/myojektest/model/OrderDAO.java</file>
-            <file>file:/D:/Github/MyOjek/MyOjek/src/myojektest/controller/OrderController.java</file>
-            <file>file:/D:/Github/MyOjek/MyOjek/src/myojektest/controller/FormOrderController.java</file>
-            <file>file:/D:/Github/MyOjek/MyOjek/src/myojektest/model/Order.java</file>
-            <file>file:/D:/Github/MyOjek/MyOjek/src/myojektest/model/PassengerDAO.java</file>
-            <file>file:/D:/Github/MyOjek/MyOjek/src/myojektest/view/FormOrderView.java</file>
-            <file>file:/D:/Github/MyOjek/MyOjek/src/myojektest/view/MainPassengerView.java</file>
-            <file>file:/D:/Github/MyOjek/MyOjek/src/myojektest/view/MainDriverView.java</file>
-            <file>file:/D:/Github/MyOjek/MyOjek/src/myojektest/view/DriverHistoryView.java</file>
-            <file>file:/D:/Github/MyOjek/MyOjek/src/myojektest/model/DriverDAO.java</file>
-            <file>file:/D:/Github/MyOjek/MyOjek/src/myojektest/MyOjekMain.java</file>
+            <file>file:/C:/Users/Muhammad%20Dzaky/Documents/NetBeansProjects/MyOjek/MyOjek/src/myojektest/view/MainDriverView.java</file>
+            <file>file:/C:/Users/Muhammad%20Dzaky/Documents/NetBeansProjects/MyOjek/MyOjek/src/myojektest/model/OrderDAO.java</file>
+            <file>file:/C:/Users/Muhammad%20Dzaky/Documents/NetBeansProjects/MyOjek/MyOjek/src/myojektest/controller/TakeOrderController.java</file>
+            <file>file:/C:/Users/Muhammad%20Dzaky/Documents/NetBeansProjects/MyOjek/MyOjek/src/myojektest/model/OrderQueue.java</file>
+            <file>file:/C:/Users/Muhammad%20Dzaky/Documents/NetBeansProjects/MyOjek/MyOjek/src/myojektest/model/Order.java</file>
         </group>
     </open-files>
 </project-private>

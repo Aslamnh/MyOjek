@@ -317,4 +317,40 @@ public class OrderDAO {
 
         return o;
     }
+    
+    public static ArrayList<Order> getPendingOrders() {
+        ArrayList<Order> list = new ArrayList<>();
+        String sql = "SELECT * FROM ride_order WHERE accepted = 0 AND finished = 0";
+        
+        try (Connection c = Database.getConnection();
+            Statement st = c.createStatement();
+            ResultSet rs = st.executeQuery(sql)) {
+            
+            while (rs.next()){
+                list.add(extractOrder(rs));
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        return list;
+    }
+    
+    public static void updateFinished(int orderId, int driverId){
+        
+        String sql = "UPDATE ride_order SET accepted = 1, finished = 1, driver_id = ? WHERE order_id = ?";
+        
+        try (Connection c = Database.getConnection();
+             PreparedStatement ps = c.prepareStatement(sql)) {
+            
+            ps.setInt(1, driverId);
+            ps.setInt(2, orderId);
+            
+            ps.executeUpdate();
+            
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 }

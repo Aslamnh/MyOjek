@@ -10,7 +10,10 @@ import myojektest.model.DriverDAO;
 import myojektest.model.Database;
 import javax.swing.JOptionPane;
 import java.sql.*;
+import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
+import myojektest.controller.TakeOrderController;
+import myojektest.model.Order;
 import myojektest.model.PassengerDAO;
 
 /**
@@ -26,6 +29,7 @@ public class MainDriverView extends javax.swing.JFrame {
     private OrderDAO orderDAO;
     private String nohp;
     private int driverid;
+    TakeOrderController controllerTakeOrder = new TakeOrderController();
     
     public MainDriverView(OrderDAO orderDAO, String nohp) {
         initComponents();
@@ -174,26 +178,10 @@ public class MainDriverView extends javax.swing.JFrame {
     private void BtnOrderanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnOrderanActionPerformed
         int row = PesananTabel.getSelectedRow();
         if (row == -1) return;
-        
-        int id = Integer.parseInt(PesananTabel.getValueAt(row, 0).toString());
-        
-        String sql = "UPDATE ride_order SET accepted = 1, finished = 1 ,driver_id=? WHERE order_id = ?";
-        
-        try(Connection c = Database.getConnection();
-            PreparedStatement ps = c.prepareStatement(sql)){
-            ps.setInt(1, driverid);
-            //ps.setString(2, DriverDAO.findNameFromID(driverid));
-            ps.setInt(2, id);
-            ps.executeUpdate();
-            
-            JOptionPane.showMessageDialog(this, "Orderan berhasil diambil");
-            
-            loadPesanan();
-            BtnOrderan.setEnabled(false);
-            
-        } catch (Exception e){
-            JOptionPane.showMessageDialog(this, "Coba lagi");
-        }
+        int orderId = Integer.parseInt(PesananTabel.getValueAt(row, 0).toString());
+        controllerTakeOrder.ambilOrderan(orderId, driverid);
+        JOptionPane.showMessageDialog(this, "Order berhasil diambil!");
+        loadPesanan();
     }//GEN-LAST:event_BtnOrderanActionPerformed
 
     private void PesananTabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PesananTabelMouseClicked
@@ -209,29 +197,20 @@ public class MainDriverView extends javax.swing.JFrame {
 
     
     public void loadPesanan(){
-        try {
-            DefaultTableModel model = (DefaultTableModel) PesananTabel.getModel();
-            model.setRowCount(0);
-            
-            String sql = "SELECT order_id, passenger_id, alamat_jemput, alamat_antar, jarak_km, biaya FROM ride_order WHERE accepted = 0 AND finished = 0";
-            
-            Connection c = Database.getConnection();
-            Statement st = c.createStatement();
-            ResultSet rs = st.executeQuery(sql);
-            
-            while(rs.next()){
-                model.addRow(new Object[]{
-                    rs.getInt("order_id"),
-                    rs.getInt("passenger_id"),
-                    rs.getString("alamat_jemput"),
-                    rs.getString("alamat_antar"),
-                    rs.getDouble("jarak_km"),
-                    rs.getInt("biaya")
-                });
-            }
-            
-        } catch (Exception e){
-            JOptionPane.showMessageDialog(null, "Gagal mengambil pesanan, coba lagi");
+        DefaultTableModel model = (DefaultTableModel) PesananTabel.getModel();
+        model.setRowCount(0);
+        
+        ArrayList<Order> list = controllerTakeOrder.loadPesanan();
+        
+        for (Order o : list) {
+            model.addRow(new Object[]{
+                o.order_id,
+                o.passenger_id,
+                o.getJemput(),
+                o.getTujuan(),
+                o.jarak_km,
+                o.biaya
+            });
         }
     }
     /**

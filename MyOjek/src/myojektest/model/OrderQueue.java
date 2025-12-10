@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * @author rafae
  */
 public class OrderQueue {
-        private static ArrayList<Order> orders = new ArrayList<Order>();
+    private static ArrayList<Order> orders = new ArrayList<Order>();
     
     public static void newOrder(Order order){
         orders.addFirst(order);
@@ -31,10 +31,11 @@ public class OrderQueue {
        
     }
     
-    
-    
-    public static void finishOrder(){
-        
+    public static void finishOrder(Order order){
+        order.finished=true;
     }
     
+    public static ArrayList<Order> loadOrderan(){
+        return OrderDAO.getPendingOrders();
+    }
 }
