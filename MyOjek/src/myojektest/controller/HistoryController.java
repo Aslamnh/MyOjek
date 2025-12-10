@@ -49,6 +49,7 @@ public class HistoryController {
 
     public void loadHistoryForPassenger(int passengerId, PassengerHistoryView view) {
         System.out.println("METHOD JALAN");
+        float totalPembayaran = 0;
         ArrayList<Order> orderList = orderDAO.findPassenger(passengerId);
         //ArrayList<Order> orderList = orderDAO.findPassenger(Integer.parseInt(nohp));
         if (orderList.isEmpty()) System.out.println("LIST KOSONG");
@@ -61,8 +62,12 @@ public class HistoryController {
             HistoryItemPanel item = new HistoryItemPanel();
             item.setHistoryItemDriver(order);
             container.add(item);
+            if (order.getDriverName() != null) {
+                totalPembayaran += order.getBiaya();
+            }
         }
 
+        view.setLabelPembayaran(totalPembayaran);
         container.revalidate();
         container.repaint(); 
     } 

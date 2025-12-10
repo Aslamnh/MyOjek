@@ -168,6 +168,7 @@
         </Container>
         <Component class="javax.swing.JLabel" name="labelPendapatan">
           <Properties>
+            <Property name="horizontalAlignment" type="int" value="4"/>
             <Property name="text" type="java.lang.String" value="Total Pendapatan:"/>
           </Properties>
         </Component>

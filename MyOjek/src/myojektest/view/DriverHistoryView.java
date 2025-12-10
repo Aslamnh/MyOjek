@@ -136,6 +136,7 @@ public class DriverHistoryView extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
+        labelPendapatan.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         labelPendapatan.setText("Total Pendapatan:");
 
         javax.swing.GroupLayout backgroundLayout = new javax.swing.GroupLayout(background);
