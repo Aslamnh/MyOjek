@@ -6,15 +6,15 @@ package myojektest.controller;
 
 import myojektest.view.PassengerHistoryView;
 import myojektest.view.DriverHistoryView;
-import myojektest.model.OrderDAO;
-import myojektest.model.Order;
 import myojektest.view.HistoryItemPanel;
 import myojektest.view.MainPassengerView;
 import myojektest.view.MainDriverView;
 
+import myojektest.model.OrderDAO;
+import myojektest.model.Order;
+
 import javax.swing.JPanel;
 import java.util.ArrayList;
-import javax.swing.JScrollPane;
 
 /**
  *
@@ -24,26 +24,26 @@ public class HistoryController {
     private OrderDAO orderDAO;
     private PassengerHistoryView viewPassengerHistory;
     private DriverHistoryView viewDriverHistory;
-    private String nohp;
+    private String noHp;
     
-    public HistoryController(PassengerHistoryView view, OrderDAO orderDAO, String nohp) {
+    public HistoryController(PassengerHistoryView view, OrderDAO orderDAO, String noHp) {
         this.viewPassengerHistory = view;
         this.viewPassengerHistory.addBackListener(e -> handleBackPassenger());
-        this.nohp = nohp;
+        this.noHp = noHp;
         
         this.orderDAO = orderDAO;
 
-        int passengerId = orderDAO.getIDFromHP(nohp);
+        int passengerId = orderDAO.getIDFromHP(noHp);
         loadHistoryForPassenger(passengerId, view);
     }
     
-    public HistoryController(DriverHistoryView view, OrderDAO orderDAO, String nohp) {
+    public HistoryController(DriverHistoryView view, OrderDAO orderDAO, String noHp) {
         this.viewDriverHistory = view;
         this.viewDriverHistory.addBackListener(e -> handleBackDriver());
         
         this.orderDAO = orderDAO;
 
-        int driverId = orderDAO.getIDFromHP(nohp);
+        int driverId = orderDAO.getIDFromHP(noHp);
         loadHistoryForDriver(driverId, view);
     }
 
@@ -51,7 +51,7 @@ public class HistoryController {
         System.out.println("METHOD JALAN");
         float totalPembayaran = 0;
         ArrayList<Order> orderList = orderDAO.findPassenger(passengerId);
-        //ArrayList<Order> orderList = orderDAO.findPassenger(Integer.parseInt(nohp));
+        //ArrayList<Order> orderList = orderDAO.findPassenger(Integer.parseInt(noHp));
         if (orderList.isEmpty()) System.out.println("LIST KOSONG");
         else System.out.println("UKURAN LIST: " + orderList.size());
         
@@ -96,11 +96,11 @@ public class HistoryController {
     
     public void handleBackPassenger() {
         viewPassengerHistory.dispose();
-        new MainPassengerView(this.orderDAO, this.nohp).setVisible(true);
+        new MainPassengerView(this.orderDAO, this.noHp).setVisible(true);
     }
     
     public void handleBackDriver() {
         viewDriverHistory.dispose();
-        new MainDriverView(this.orderDAO, this.nohp).setVisible(true);
+        new MainDriverView(this.orderDAO, this.noHp).setVisible(true);
     }
 }

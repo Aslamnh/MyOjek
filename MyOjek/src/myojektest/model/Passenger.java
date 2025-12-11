@@ -6,7 +6,7 @@ package myojektest.model;
 
 /**
  *
- * @author rafae
+ * @author rafael
  */
 public class Passenger {
     public int passenger_id;

@@ -4,11 +4,11 @@
  */
 package myojektest.controller;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import myojektest.model.Order;
 import myojektest.model.OrderDAO;
 import myojektest.model.OrderQueue;
+
+import java.util.ArrayList;
 
 /**
  *

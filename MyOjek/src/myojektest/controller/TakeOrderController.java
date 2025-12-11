@@ -4,12 +4,13 @@
  */
 package myojektest.controller;
 
-import java.sql.*;
-import java.util.ArrayList;
 import myojektest.model.Database;
 import myojektest.model.Order;
 import myojektest.model.OrderDAO;
 import myojektest.model.OrderQueue;
+
+import java.sql.*;
+import java.util.ArrayList;
 
 /**
  *

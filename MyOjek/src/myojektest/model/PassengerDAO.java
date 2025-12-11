@@ -6,7 +6,7 @@ package myojektest.model;
 
 /**
  *
- * @author rafae
+ * @author rafael
  */
 import java.sql.*;
 import java.util.ArrayList;

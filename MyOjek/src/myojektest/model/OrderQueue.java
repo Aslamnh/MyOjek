@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author rafae
+ * @author rafael
  */
 public class OrderQueue {
     private static ArrayList<Order> orders = new ArrayList<Order>();

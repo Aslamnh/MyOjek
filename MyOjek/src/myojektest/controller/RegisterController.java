@@ -6,44 +6,46 @@ package myojektest.controller;
 
 import myojektest.view.LoginView;
 import myojektest.view.RegisterView;
-import javax.swing.JOptionPane;
+
 import myojektest.model.Passenger;
 import myojektest.model.PassengerDAO;
 import myojektest.model.OrderDAO;
+
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author aslam
  */
 public class RegisterController {
-    private RegisterView view;
-    private PassengerDAO dao;
+    private RegisterView loginView;
+    private PassengerDAO passengerDAO;
     private OrderDAO orderDAO;
 
-    public RegisterController(RegisterView view, PassengerDAO dao, OrderDAO orderDAO) {
-        this.view = view;
-        this.dao = dao;
+    public RegisterController(RegisterView loginView, PassengerDAO passengerDAO, OrderDAO orderDAO) {
+        this.loginView = loginView;
+        this.passengerDAO = passengerDAO;
         this.orderDAO = orderDAO;
-        this.view.addRegisterListener(e -> handleRegister());
+        this.loginView.addRegisterListener(e -> handleRegister());
     }
 
     private void handleRegister() {
         // ambil data
-        String nama = view.getNamaField().getText();
-        String email = view.getEmailField().getText();
-        String noHp = view.getNoHpField().getText();
-        String password = view.getPasswordField().getText();
-        String confirmPassword = view.getConfirmPasswordField().getText();
+        String nama = loginView.getNamaField().getText();
+        String email = loginView.getEmailField().getText();
+        String noHp = loginView.getNoHpField().getText();
+        String password = loginView.getPasswordField().getText();
+        String confirmPassword = loginView.getConfirmPasswordField().getText();
 
         // wajib diisi
         if (nama.isEmpty() || noHp.isEmpty() || password.isEmpty() || !password.equals(confirmPassword)) {
-            JOptionPane.showMessageDialog(view, "Semua field harus diisi dan Password harus sama.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(loginView, "Semua field harus diisi dan Password harus sama.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
         // mengecek no hp
-        if (dao.isPhoneNumberExists(noHp)) {
-            JOptionPane.showMessageDialog(view, "Nomor HP sudah terdaftar.", "Error", JOptionPane.ERROR_MESSAGE);
+        if (passengerDAO.isPhoneNumberExists(noHp)) {
+            JOptionPane.showMessageDialog(loginView, "Nomor HP sudah terdaftar.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
         
@@ -55,10 +57,10 @@ public class RegisterController {
         newPassenger.password = password;
 
         // masuk ke database
-        dao.insert(newPassenger);
+        passengerDAO.insert(newPassenger);
 
-        JOptionPane.showMessageDialog(view, "Pendaftaran Berhasil! Silakan Masuk.", "Sukses", JOptionPane.INFORMATION_MESSAGE);
-        view.dispose();
-        new LoginView(dao, orderDAO).setVisible(true);
+        JOptionPane.showMessageDialog(loginView, "Pendaftaran Berhasil! Silakan Masuk.", "Sukses", JOptionPane.INFORMATION_MESSAGE);
+        loginView.dispose();
+        new LoginView(passengerDAO, orderDAO).setVisible(true);
     }
 }

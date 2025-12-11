@@ -6,43 +6,45 @@ package myojektest.controller;
 
 import myojektest.view.LoginView;
 import myojektest.view.RegisterView;
-import javax.swing.JOptionPane;
 import myojektest.view.MainPassengerView;
+import myojektest.view.MainDriverView;
+
+import myojektest.model.OrderDAO;
 import myojektest.model.Passenger;
 import myojektest.model.PassengerDAO;
-import myojektest.view.MainDriverView;
-import myojektest.model.OrderDAO;
+
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author aslam
  */
 public class LoginController {
-    private LoginView view;
-    private PassengerDAO dao;
+    private LoginView loginView;
+    private PassengerDAO passengerDAO;
     private OrderDAO orderDAO;
 
-    public LoginController(LoginView view, PassengerDAO dao, OrderDAO orderDAO) {
-        this.view = view;
-        this.dao = dao;
+    public LoginController(LoginView loginView, PassengerDAO passengerDAO, OrderDAO orderDAO) {
+        this.loginView = loginView;
+        this.passengerDAO = passengerDAO;
         this.orderDAO = orderDAO;
-        this.view.addLoginListener(e -> handleLogin());
-        this.view.addSwitchToRegisterListener(e -> switchToRegister());
+        this.loginView.addLoginListener(e -> handleLogin());
+        this.loginView.addSwitchToRegisterListener(e -> switchToRegister());
     }
 
     private void handleLogin() {
         // ambil data
-        String noHp = view.getNoHpField().getText();
-        String password = view.getPasswordField().getText();
+        String noHp = loginView.getNoHpField().getText();
+        String password = loginView.getPasswordField().getText();
 
         // autentikasi
-        Passenger authenticatedPassenger = dao.authenticate(noHp, password);
+        Passenger authenticatedPassenger = passengerDAO.authenticate(noHp, password);
 
-        // update view
+        // update loginView
         if (authenticatedPassenger != null) {
-            JOptionPane.showMessageDialog(view, "Masuk Berhasil! Selamat datang, " + authenticatedPassenger.nama + ".", "Sukses", JOptionPane.INFORMATION_MESSAGE);
-            view.dispose();
-            if (!view.driver) 
+            JOptionPane.showMessageDialog(loginView, "Masuk Berhasil! Selamat datang, " + authenticatedPassenger.nama + ".", "Sukses", JOptionPane.INFORMATION_MESSAGE);
+            loginView.dispose();
+            if (!loginView.driver) 
               java.awt.EventQueue.invokeLater(() -> {      
                   new MainPassengerView(orderDAO, noHp).setVisible(true);
               });
@@ -54,12 +56,12 @@ public class LoginController {
             
          
         } else {
-            JOptionPane.showMessageDialog(view, "Nomor HP atau Password salah.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(loginView, "Nomor HP atau Password salah.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
     
     private void switchToRegister() {
-        view.dispose();
-        new RegisterView(this.dao, this.orderDAO).setVisible(true);
+        loginView.dispose();
+        new RegisterView(this.passengerDAO, this.orderDAO).setVisible(true);
     }
 }

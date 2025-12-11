@@ -7,7 +7,7 @@ package myojektest.model;
 
 /**
  *
- * @author rafae
+ * @author rafael
  */
 
 import java.sql.Connection;

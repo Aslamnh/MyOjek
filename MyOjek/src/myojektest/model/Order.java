@@ -8,7 +8,7 @@ import myojektest.view.FormOrderView;
 
 /**
  *
- * @author rafae
+ * @author rafael
  */
 public class Order {
 
