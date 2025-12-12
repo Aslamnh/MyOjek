@@ -88,7 +88,7 @@ public class Order {
         return PassengerDAO.findNameFromID(getPassengerID());
     }
     public String getDriverName() {
-        return DriverDAO.findNameFromID(getDriverID());
+        return new DriverDAO().findNameFromID(getDriverID());
     }
     public int getPassengerID() {
         return passenger_id;

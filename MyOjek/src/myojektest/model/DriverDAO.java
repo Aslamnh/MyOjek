@@ -123,7 +123,7 @@ public class DriverDAO {
         }
     }
     
-    public static String findNameFromID(int passengerId) {
+    public  String findNameFromID(int passengerId) {
         String sql = "SELECT nama FROM passenger WHERE passenger_id=?";
         String nama = null;
 
