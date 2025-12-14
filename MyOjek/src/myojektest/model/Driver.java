@@ -17,4 +17,5 @@ public class Driver {
     public String simNumber;
     public String stnkNumber;
     public String plateNumber;
+    public String email;
 }

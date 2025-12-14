@@ -11,6 +11,9 @@ import java.awt.event.ActionListener;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JLabel;
+import myojektest.model.DriverDAO;
+import myojektest.model.PassengerDAO;
+
 
 /**
  *
@@ -22,14 +25,14 @@ public class PassengerHistoryView extends javax.swing.JFrame {
      * Creates new form LoginView
      */
     
-    public PassengerHistoryView(OrderDAO orderDAO, String nohp) {
+    public PassengerHistoryView(OrderDAO orderDAO, String nohp,DriverDAO driverDAO, PassengerDAO passenggerDAO) {
         initComponents();
         JPanel historyContainer = getHistoryList();
         historyContainer.setLayout(new javax.swing.BoxLayout(
             historyContainer, 
             javax.swing.BoxLayout.Y_AXIS
         ));
-        new HistoryController(this, orderDAO, nohp);
+        new HistoryController(this, orderDAO, nohp,driverDAO,passenggerDAO);
     }
     
 //    public PassengerHistoryView() {

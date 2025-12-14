@@ -8,6 +8,8 @@ import java.awt.event.ActionListener;
 import myojektest.controller.LoginController;
 import myojektest.model.PassengerDAO;
 import myojektest.model.OrderDAO;
+import myojektest.model.DriverDAO;
+
 
 /**
  *
@@ -18,10 +20,10 @@ public class LoginView extends javax.swing.JFrame {
     /**
      * Creates new form LoginView
      */
-    public LoginView(PassengerDAO passengerDAO, OrderDAO orderDAO) {
+    public LoginView(PassengerDAO passengerDAO, OrderDAO orderDAO,DriverDAO driverDAO) {
         initComponents();
         
-        new LoginController(this, passengerDAO, orderDAO);
+        new LoginController(this, passengerDAO, orderDAO,driverDAO);
     }
     
     public javax.swing.JTextField getNoHpField() {

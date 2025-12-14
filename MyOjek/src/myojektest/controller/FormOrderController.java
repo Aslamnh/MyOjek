@@ -22,17 +22,17 @@ public class FormOrderController {
     private FormOrderView orderView;
     private Order orderModel;
     private OrderController orderController;
-    
+    private PassengerDAO passengerDAO;
     
    
     
     
 
-    public FormOrderController(FormOrderView view, Order model, OrderController controller) {
+    public FormOrderController(FormOrderView view, Order model, OrderController controller,PassengerDAO passengerDAO) {
         this.orderView = view;
         this.orderModel = model;
         this.orderController = controller;
-
+        this.passengerDAO = passengerDAO;
         this.orderView.addPesanListener(new PesanListener());
         //this.orderView.addJarakChangeListener(new JarakChangeListener());
         this.orderView.addJarakDocumentListener(new JarakDocumentListener());
@@ -127,7 +127,7 @@ public class FormOrderController {
                 orderModel.setJarak_km(jarak);
                 orderModel.setTanggal(LocalDate.now().toString()); 
                 orderModel.setBiaya(totalBiaya); 
-                int passengerId = PassengerDAO.getFiltered(null,orderView.getNoHP() , null, null).getFirst().passenger_id;
+                int passengerId = passengerDAO.getFiltered(null,orderView.getNoHP() , null, null).getFirst().passenger_id;
                 orderModel.setPassengerID(passengerId);
 
                 boolean sukses = orderController.submitNewOrder(orderModel);

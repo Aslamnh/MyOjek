@@ -253,8 +253,10 @@ public class OrderDAO {
         try (Connection c = Database.getConnection();
             PreparedStatement ps = c.prepareStatement(sql)) {
 
+            
             ps.setInt(1, id);
             
+            System.out.println(ps.toString());
             try (ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
                     Order o = new Order();
@@ -277,27 +279,9 @@ public class OrderDAO {
         
         return orderList;
     }
-    
-    public int getIDFromHP(String nohp) {
-        String sql = "SELECT passenger_id FROM passenger WHERE no_hp = ?";
-        int passengerId = -1;
 
-        try (Connection c = Database.getConnection();
-             PreparedStatement ps = c.prepareStatement(sql)) {
 
-            ps.setString(1, nohp);
 
-            try (ResultSet rs = ps.executeQuery()) {
-                if (rs.next()) {
-                    passengerId = rs.getInt("passenger_id");
-                }
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return passengerId;
-    }
 
 
     // Helper extract dari ResultSet

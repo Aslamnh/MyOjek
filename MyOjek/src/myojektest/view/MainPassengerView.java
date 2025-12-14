@@ -4,7 +4,9 @@
  */
 package myojektest.view;
 
+import myojektest.model.DriverDAO;
 import myojektest.model.OrderDAO;
+import myojektest.model.PassengerDAO;
 
 /**
  *
@@ -17,18 +19,17 @@ public class MainPassengerView extends javax.swing.JFrame {
      */
     
     
-    public String nohp;
-    public OrderDAO orderDAO;
+    private String nohp;
+    private OrderDAO orderDAO;
+    private PassengerDAO passengerDAO;
+    private DriverDAO driverDAO;
     
-    public MainPassengerView(String nohp) {
-        initComponents();
-        this.nohp=nohp;
-    }
-    
-    public MainPassengerView(OrderDAO orderDAO, String nohp) {
+    public MainPassengerView(OrderDAO orderDAO,PassengerDAO passengerDAO, String nohp,DriverDAO driverDAO) {
         initComponents();
         this.orderDAO = orderDAO;
         this.nohp=nohp;
+        this.passengerDAO=passengerDAO;
+        this.driverDAO=  driverDAO;
     }
 
     /**
@@ -158,19 +159,16 @@ public class MainPassengerView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void KemanaFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KemanaFieldActionPerformed
-    java.awt.EventQueue.invokeLater(() -> {      
-            new FormOrderView(this).setVisible(true);
-        });
+
     }//GEN-LAST:event_KemanaFieldActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void riwayatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_riwayatButtonActionPerformed
         this.dispose();
         java.awt.EventQueue.invokeLater(() -> {      
-            new PassengerHistoryView(orderDAO, nohp).setVisible(true);
+            new PassengerHistoryView(orderDAO, nohp,driverDAO,passengerDAO).setVisible(true);
         });
     }//GEN-LAST:event_riwayatButtonActionPerformed
 
@@ -195,7 +193,7 @@ public class MainPassengerView extends javax.swing.JFrame {
 
     private void MotorButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MotorButtonActionPerformed
     java.awt.EventQueue.invokeLater(() -> {      
-        FormOrderView form = new FormOrderView(this);
+        FormOrderView form = new FormOrderView(this,passengerDAO);
         form.setNoHP(nohp);
         form.setVisible(true);
             
@@ -205,24 +203,15 @@ public class MainPassengerView extends javax.swing.JFrame {
 
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
- java.awt.EventQueue.invokeLater(() -> {      
-            new FormOrderView(this).setVisible(true);
-        });
-
 
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
- java.awt.EventQueue.invokeLater(() -> {      
-            new FormOrderView(this).setVisible(true);
-        });
+
 
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
- java.awt.EventQueue.invokeLater(() -> {      
-            new FormOrderView(this).setVisible(true);
-        });
 
     }//GEN-LAST:event_jButton6ActionPerformed
 
@@ -262,11 +251,11 @@ public class MainPassengerView extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MainPassengerView(null).setVisible(true);
-            }
-        });
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new MainPassengerView(null).setVisible(true);
+//            }
+//        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

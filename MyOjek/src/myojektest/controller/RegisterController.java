@@ -11,6 +11,9 @@ import myojektest.model.Passenger;
 import myojektest.model.PassengerDAO;
 import myojektest.model.OrderDAO;
 
+import myojektest.model.Driver;
+import myojektest.model.DriverDAO;
+
 import javax.swing.JOptionPane;
 
 /**
@@ -18,34 +21,49 @@ import javax.swing.JOptionPane;
  * @author aslam
  */
 public class RegisterController {
-    private RegisterView loginView;
+    private RegisterView registerView;
     private PassengerDAO passengerDAO;
+    private DriverDAO driverDAO;
     private OrderDAO orderDAO;
 
-    public RegisterController(RegisterView loginView, PassengerDAO passengerDAO, OrderDAO orderDAO) {
-        this.loginView = loginView;
+    public RegisterController(RegisterView loginView, PassengerDAO passengerDAO, OrderDAO orderDAO,DriverDAO driverDAO) {
+        this.registerView = loginView;
         this.passengerDAO = passengerDAO;
         this.orderDAO = orderDAO;
-        this.loginView.addRegisterListener(e -> handleRegister());
+        this.driverDAO= driverDAO;
+        this.registerView.addRegisterListener(e -> handleRegister());
     }
 
     private void handleRegister() {
+        
+        boolean isdriver= registerView.getDriverstatus();
+        boolean ispassanger =registerView.getPassangerstatus();
+        if (!isdriver&&!ispassanger){
+                    JOptionPane.showMessageDialog(registerView, "Pilih pnedaftaran sebagai apa.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        
         // ambil data
-        String nama = loginView.getNamaField().getText();
-        String email = loginView.getEmailField().getText();
-        String noHp = loginView.getNoHpField().getText();
-        String password = loginView.getPasswordField().getText();
-        String confirmPassword = loginView.getConfirmPasswordField().getText();
+        String nama = registerView.getNamaField().getText();
+        String email = registerView.getEmailField().getText();
+        String noHp = registerView.getNoHpField().getText();
+        String password = registerView.getPasswordField().getText();
+        String confirmPassword = registerView.getConfirmPasswordField().getText();
 
         // wajib diisi
         if (nama.isEmpty() || noHp.isEmpty() || password.isEmpty() || !password.equals(confirmPassword)) {
-            JOptionPane.showMessageDialog(loginView, "Semua field harus diisi dan Password harus sama.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(registerView, "Semua field harus diisi dan Password harus sama.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-
+        
+        
+        
+        
+        if (ispassanger){
         // mengecek no hp
         if (passengerDAO.isPhoneNumberExists(noHp)) {
-            JOptionPane.showMessageDialog(loginView, "Nomor HP sudah terdaftar.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(registerView, "Nomor HP sudah terdaftar.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
         
@@ -59,8 +77,34 @@ public class RegisterController {
         // masuk ke database
         passengerDAO.insert(newPassenger);
 
-        JOptionPane.showMessageDialog(loginView, "Pendaftaran Berhasil! Silakan Masuk.", "Sukses", JOptionPane.INFORMATION_MESSAGE);
-        loginView.dispose();
-        new LoginView(passengerDAO, orderDAO).setVisible(true);
+        JOptionPane.showMessageDialog(registerView, "Pendaftaran Berhasil! Silakan Masuk.", "Sukses", JOptionPane.INFORMATION_MESSAGE);
+        registerView.dispose();
+        new LoginView(passengerDAO, orderDAO,driverDAO).setVisible(true);
+    }
+        
+        
+        else if (isdriver){
+        // mengecek no hp
+        if (driverDAO.isPhoneNumberExists(noHp)) {
+            JOptionPane.showMessageDialog(registerView, "Nomor HP sudah terdaftar.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        // buat objek Passenger baru
+        Driver newDriver = new Driver();
+        newDriver.nama = nama;
+        newDriver.email = email;
+        newDriver.no_hp = noHp;
+        newDriver.password = password;
+
+        // masuk ke database
+        driverDAO.insert(newDriver);
+
+        JOptionPane.showMessageDialog(registerView, "Pendaftaran Berhasil! Silakan Masuk.", "Sukses", JOptionPane.INFORMATION_MESSAGE);
+        registerView.dispose();
+        new LoginView(passengerDAO, orderDAO,driverDAO).setVisible(true);
+    } 
+    
+    
     }
 }

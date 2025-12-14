@@ -29,15 +29,18 @@ public class MainDriverView extends javax.swing.JFrame {
     private OrderDAO orderDAO;
     private String nohp;
     private int driverid;
+    private DriverDAO driverDAO;
+    private PassengerDAO passengerDAO;
     TakeOrderController controllerTakeOrder = new TakeOrderController();
     
-    public MainDriverView(OrderDAO orderDAO, String nohp) {
+    public MainDriverView(OrderDAO orderDAO, String nohp,DriverDAO driverDAO,PassengerDAO passengerDAO) {
         initComponents();
         loadPesanan();
         this.nohp = nohp;
         this.orderDAO = orderDAO;
         BtnOrderan.setEnabled(false);
-        driverid= PassengerDAO.getFiltered(null, nohp, null, null).getFirst().passenger_id;
+        this.driverDAO= driverDAO;
+        driverid= driverDAO.getFiltered(null, nohp, null, null).getFirst().driver_id;
         
         
         
@@ -191,7 +194,7 @@ public class MainDriverView extends javax.swing.JFrame {
     private void riwayatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_riwayatButtonActionPerformed
         this.dispose();
         java.awt.EventQueue.invokeLater(() -> {      
-            new DriverHistoryView(orderDAO, nohp).setVisible(true);
+            new DriverHistoryView(orderDAO, nohp,driverDAO,passengerDAO).setVisible(true);
         });
     }//GEN-LAST:event_riwayatButtonActionPerformed
 

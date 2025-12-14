@@ -10,6 +10,8 @@ import myojektest.model.OrderDAO;
 import java.awt.event.ActionListener;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import myojektest.model.DriverDAO;
+import myojektest.model.PassengerDAO;
 
 /**
  *
@@ -23,7 +25,7 @@ public class DriverHistoryView extends javax.swing.JFrame {
     
     String nohp;
     
-    public DriverHistoryView(OrderDAO orderDAO, String nohp) {
+    public DriverHistoryView(OrderDAO orderDAO, String nohp,DriverDAO driverDAO,PassengerDAO passengerDAO) {
         initComponents();
         this.nohp = nohp;
         JPanel historyContainer = getHistoryList();
@@ -31,7 +33,7 @@ public class DriverHistoryView extends javax.swing.JFrame {
             historyContainer, 
             javax.swing.BoxLayout.Y_AXIS
         ));
-        new HistoryController(this, orderDAO, nohp);
+        new HistoryController(this, orderDAO, nohp,driverDAO,passengerDAO);
     }
     
 //    public PassengerHistoryView() {

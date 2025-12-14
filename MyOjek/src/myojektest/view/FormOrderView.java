@@ -12,6 +12,7 @@ import java.awt.event.ActionListener;
 import myojektest.model.Order;
 import myojektest.controller.OrderController;
 import myojektest.controller.FormOrderController;
+import myojektest.model.PassengerDAO;
 
 /**
  *
@@ -24,17 +25,16 @@ public class FormOrderView extends javax.swing.JFrame {
     
     MainPassengerView view;
     
-    
     /**
      * Creates new form NewJFrame
      */
-    public FormOrderView(MainPassengerView view) {
+    public FormOrderView(MainPassengerView view,PassengerDAO passengerDAO  ) {
         initComponents();
         //lblAdminVal.setText("Rp. " + OrderController.admin);
         this.view = view;
         Order orderModel = new Order();
         OrderController orderController = new OrderController();
-        new FormOrderController(this, orderModel, orderController);
+        new FormOrderController(this, orderModel, orderController,passengerDAO);
     }
     
     

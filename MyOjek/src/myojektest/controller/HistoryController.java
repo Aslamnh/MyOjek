@@ -15,6 +15,8 @@ import myojektest.model.Order;
 
 import javax.swing.JPanel;
 import java.util.ArrayList;
+import myojektest.model.DriverDAO;
+import myojektest.model.PassengerDAO;
 
 /**
  *
@@ -25,25 +27,28 @@ public class HistoryController {
     private PassengerHistoryView viewPassengerHistory;
     private DriverHistoryView viewDriverHistory;
     private String noHp;
+    private DriverDAO driverDAO;
+    private PassengerDAO passengerDAO;
     
-    public HistoryController(PassengerHistoryView view, OrderDAO orderDAO, String noHp) {
+    public HistoryController(PassengerHistoryView view, OrderDAO orderDAO, String noHp,DriverDAO driverDAO,PassengerDAO passengerDAO) {
         this.viewPassengerHistory = view;
         this.viewPassengerHistory.addBackListener(e -> handleBackPassenger());
         this.noHp = noHp;
-        
+        this.passengerDAO= passengerDAO;
         this.orderDAO = orderDAO;
 
-        int passengerId = orderDAO.getIDFromHP(noHp);
+        int passengerId = passengerDAO.getIDFromHP(noHp);
         loadHistoryForPassenger(passengerId, view);
     }
     
-    public HistoryController(DriverHistoryView view, OrderDAO orderDAO, String noHp) {
+    public HistoryController(DriverHistoryView view, OrderDAO orderDAO, String noHp,DriverDAO driverDAO,PassengerDAO passengerDAO) {
         this.viewDriverHistory = view;
         this.viewDriverHistory.addBackListener(e -> handleBackDriver());
-        
+        this.passengerDAO=passengerDAO;
+        this.driverDAO=driverDAO;
         this.orderDAO = orderDAO;
 
-        int driverId = orderDAO.getIDFromHP(noHp);
+        int driverId = driverDAO.getIDFromHP(noHp);
         loadHistoryForDriver(driverId, view);
     }
 
@@ -96,11 +101,11 @@ public class HistoryController {
     
     public void handleBackPassenger() {
         viewPassengerHistory.dispose();
-        new MainPassengerView(this.orderDAO, this.noHp).setVisible(true);
+        new MainPassengerView(this.orderDAO, passengerDAO,this.noHp,driverDAO).setVisible(true);
     }
     
     public void handleBackDriver() {
         viewDriverHistory.dispose();
-        new MainDriverView(this.orderDAO, this.noHp).setVisible(true);
+        new MainDriverView(this.orderDAO, this.noHp,driverDAO,passengerDAO).setVisible(true);
     }
 }

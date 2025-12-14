@@ -54,6 +54,27 @@ public class PassengerDAO {
         }
     }
 
+    public int getIDFromHP(String nohp) {
+        String sql = "SELECT passenger_id FROM passenger WHERE no_hp = ?";
+        int passengerId = -1;
+
+        try (Connection c = Database.getConnection();
+             PreparedStatement ps = c.prepareStatement(sql)) {
+
+            ps.setString(1, nohp);
+
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    passengerId = rs.getInt("passenger_id");
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return passengerId;
+    }
+
     public ArrayList<Passenger> getAll() {
         ArrayList<Passenger> list = new ArrayList<>();
         String sql = "SELECT * FROM passenger";
@@ -79,7 +100,7 @@ public class PassengerDAO {
     }
 
 
-    public static ArrayList<Passenger> getFiltered(Integer passengerId, String noHp, String email, String nama) {
+    public  ArrayList<Passenger> getFiltered(Integer passengerId, String noHp, String email, String nama) {
     ArrayList<Passenger> list = new ArrayList<>();
 
     String sql = "SELECT * FROM passenger WHERE "
