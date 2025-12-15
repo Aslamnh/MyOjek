@@ -47,7 +47,7 @@ public class HistoryController {
         this.passengerDAO=passengerDAO;
         this.driverDAO=driverDAO;
         this.orderDAO = orderDAO;
-
+        this.noHp = noHp;
         int driverId = driverDAO.getIDFromHP(noHp);
         loadHistoryForDriver(driverId, view);
     }
