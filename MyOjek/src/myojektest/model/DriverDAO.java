@@ -71,7 +71,7 @@ public class DriverDAO {
              PreparedStatement ps = c.prepareStatement(sql)) {
 
             ps.setString(1, nohp);
-
+            System.out.println(ps.toString());
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
                     passengerId = rs.getInt("driver_id");

@@ -330,7 +330,7 @@ public class OrderDAO {
             
             ps.setInt(1, driverId);
             ps.setInt(2, orderId);
-            
+            System.out.println(ps.toString());
             ps.executeUpdate();
             
         } catch (Exception e){
