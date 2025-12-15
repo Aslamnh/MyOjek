@@ -64,6 +64,7 @@ public class MainDriverView extends javax.swing.JFrame {
         MyOjek = new javax.swing.JLabel();
         BtnOrderan = new javax.swing.JButton();
         riwayatButton = new javax.swing.JButton();
+        refreshB = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -130,6 +131,13 @@ public class MainDriverView extends javax.swing.JFrame {
             }
         });
 
+        refreshB.setText("Refresh");
+        refreshB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refreshBActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -143,7 +151,8 @@ public class MainDriverView extends javax.swing.JFrame {
                     .addComponent(BtnOrderan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(riwayatButton, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(refreshB, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -156,8 +165,10 @@ public class MainDriverView extends javax.swing.JFrame {
                 .addComponent(riwayatButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(BtnOrderan)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(refreshB)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 579, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 554, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
 
@@ -197,6 +208,11 @@ public class MainDriverView extends javax.swing.JFrame {
             new DriverHistoryView(orderDAO, nohp,driverDAO,passengerDAO).setVisible(true);
         });
     }//GEN-LAST:event_riwayatButtonActionPerformed
+
+    private void refreshBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshBActionPerformed
+        loadPesanan();
+        BtnOrderan.setEnabled(false);
+    }//GEN-LAST:event_refreshBActionPerformed
 
     
     public void loadPesanan(){
@@ -262,6 +278,7 @@ public class MainDriverView extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton refreshB;
     private javax.swing.JButton riwayatButton;
     // End of variables declaration//GEN-END:variables
 }
